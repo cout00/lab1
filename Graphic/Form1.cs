@@ -32,11 +32,17 @@ namespace Graphic
                 }
                 return -1;
             };           
-            inpFunc.QuantumOrd = TryConvert(ConrainsQVOrd);
+            inpFunc.QuantumOrd = 0;
             inpFunc.QuantumAbs = TryConvert(ConrainsQVAbs);
             inpFunc.Build();
             chart.Series[0].Points.Clear();
-            foreach (var item in inpFunc)
+            //foreach (var item in inpFunc)
+            //{
+            //    chart.Series[0].Points.Add(item.ToSeriesPoint());
+            //}
+
+            var res = DPF.GetDpf(inpFunc, 200);
+            foreach (var item in res)
             {
                 chart.Series[0].Points.Add(item.ToSeriesPoint());
             }
