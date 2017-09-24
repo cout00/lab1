@@ -18,9 +18,9 @@ namespace Graphic
         {
             InitializeComponent();
             OnChangeHandler(null, null);
+
         }
 
-        List<Function> currFunctions = new List<Function>();
 
         void DrawFunction(Function inpFunc, Series whereDraw, bool isInterpolated)
         {
@@ -38,20 +38,25 @@ namespace Graphic
             };
             inpFunc.QuantumOrd = isInterpolated ? 0 : TryConvert(ConrainsQVOrd);
             inpFunc.QuantumAbs = TryConvert(ConrainsQVAbs);
-            inpFunc.Build();
             whereDraw.Points.Clear();
-            currFunctions.Add(inpFunc);
-            foreach (var item in inpFunc)
+            
+            inpFunc.OnNewPoint += (sen, e) =>
             {
+                chartControl1.Invoke((Action)(() =>
+                {
+                    
+                    chartControl1.Update();
+                    whereDraw.Points.Add(e.point.ToSeriesPoint());
+                    
+                }));
 
-                whereDraw.Points.Add(item.ToSeriesPoint());
-            }
 
-            //var res = DPF.GetDpf(inpFunc, 200);
-            //foreach (var item in res)
-            //{
-            //    chart.Series[0].Points.Add(item.ToSeriesPoint());
-            //}
+            };
+            chartControl1.BeginInit();
+            inpFunc.Build();
+            chartControl1.EndInit();
+            //currFunctions.Add(inpFunc);
+
         }
 
         void OnOuterFormCreating(object sender, OuterFormCreatingEventArgs e)
@@ -65,11 +70,11 @@ namespace Graphic
 
         void OnChangeHandler(object sender, EventArgs e)
         {
-            //chartControl1.Series[1].ChangeView(ViewType.Bar);
+            //chartControl1.Series["meme"].ChangeView(ViewType.Bar);
             //DrawFunction(new FunctionFromTask(), chart.Series[0], true);
-            DrawFunction(new FunctionFromTask(), chartControl1.Series[0], false);
+            //DrawFunction(new FunctionFromTask(), chartControl1.Series[0], false);
             //DrawFunction(new FunctionFromTask(), chartControl1.Series[1], true);
-            DrawFunction(new ACHFunction(currFunctions[0]), chartSpectr.Series[0], true);
+            //DrawFunction(new ACHFunction(currFunctions[0]), chartSpectr.Series[0], true);
         }
 
         private void chart_Click(object sender, EventArgs e)
@@ -84,6 +89,7 @@ namespace Graphic
 
         private void checkBox1_CheckStateChanged(object sender, EventArgs e)
         {
+            DrawFunction(new FunctionFromTask(), chartControl1.Series[0], false);
 
             switch (((CheckBox)sender).CheckState)
             {
@@ -99,11 +105,26 @@ namespace Graphic
                         break;
                     }
                 case CheckState.Indeterminate:
-                    
+
                     break;
 
             }
-            
+
+        }
+
+        private void tabFormControl1_SelectedPageChanged(object sender, TabFormSelectedPageChangedEventArgs e)
+        {
+            foreach (var item in e.Page.ContentContainer Controls)
+            {
+                if (item is ChartControl)
+                {
+                    ((ChartControl)(item)).Series.Contains(whereDraw);
+                    MessageBox.Show(((ChartControl)(item)).Name);
+                }
+            }
+
+            //chartControl1.
+            //MessageBox.Show(e.Page.Text);
         }
     }
 }
