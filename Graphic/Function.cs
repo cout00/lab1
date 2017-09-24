@@ -14,10 +14,16 @@ namespace Graphic
         public float QuantumAbs { get; set; }
         public float QuantumOrd { get; set; }
 
+        protected float T;
+
+        Task<Point> task;
+
         public void Build()
         {
+            
             if (QuantumAbs!=-1&&QuantumOrd!=-1)
             {
+                
                 FillList();
             }
         }

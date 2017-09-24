@@ -14,7 +14,6 @@ namespace Graphic
             var arr = new List<Complex>();
             for (int u = 0; u < count; u++)
             {
-                //цикл суммы 
                 Complex summa = new Complex();
                 for (int k = 0; k < func.Count; k++)
                 {
