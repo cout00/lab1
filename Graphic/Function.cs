@@ -19,8 +19,7 @@ namespace Graphic
         Task<Point> task;
 
         public void Build()
-        {
-            
+        {           
             if (QuantumAbs!=-1&&QuantumOrd!=-1)
             {
                 
