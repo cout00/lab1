@@ -10,18 +10,16 @@ namespace Graphic
 {
     public class  FunctionFromTask :Function
     {
-        
-
+     
         public FunctionFromTask()
         {
             T = 12 / 1000F;
         }
 
+        public override event EventHandler<FuncEventArgs> OnNewPoint;
+
         protected override void FillList()
         {
-            
-
-            var StartQuantedOrd = (float)Math.Sin(Left) * (float)Math.Pow(Math.E, (-Math.Sin(Left / 2)));
             for (float Left = this.Left; Left < Right;)
             {
                 var NotQuantedOrd = (float)Math.Sin(Left) * (float)Math.Pow(Math.E, (-Math.Sin(Left / 2)));
@@ -74,13 +72,9 @@ namespace Graphic
                             }
                         }
                     }
+                    OnNewPoint?.Invoke(this, new FuncEventArgs(this[i]));
+                    //Task.Delay(100); 
                 }
-
-
-                
-                
-
-
             }
         }
     }

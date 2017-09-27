@@ -12,7 +12,7 @@ namespace Graphic
         List<Complex> listOfHarminics;
 
         public ACHFunction(Function InpFunction) : base(InpFunction)
-        {
+        {           
             listOfHarminics = DPF.GetDpf(InpFunction, 100);
             for (int i = 0; i < listOfHarminics.Count - 1; i++)
             {

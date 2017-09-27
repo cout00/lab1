@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Graphic
 {
-    public class Function :List<PointF>
+    public abstract class Function :List<PointF>
     {
         public float Left { get; set; }
         public float Right { get; set; }
@@ -16,21 +16,29 @@ namespace Graphic
 
         protected float T;
 
-        Task<Point> task;
+        public abstract event EventHandler<FuncEventArgs> OnNewPoint;
 
         public void Build()
         {           
             if (QuantumAbs!=-1&&QuantumOrd!=-1)
-            {
-                
+            {                
                 FillList();
-            }
+            }            
         }
 
-        protected virtual void FillList()
-        {
-
-        }
-
+        protected abstract void FillList();       
     }
+
+    public class FuncEventArgs:EventArgs
+    {
+        public PointF point { get; private set; }
+
+        public FuncEventArgs(PointF nP)
+        {
+            point = nP;
+        }
+    }
+
+    
+
 }
