@@ -16,7 +16,7 @@ namespace Graphic
             listOfHarminics = DPF.GetDpf(InpFunction, 100);
             for (int i = 0; i < listOfHarminics.Count - 1; i++)
             {
-                Add(new System.Drawing.PointF(i, (float)listOfHarminics[i].Phase));
+                Add(new System.Drawing.PointF(i, (float)listOfHarminics[i].Magnitude));
             }
         }
     }

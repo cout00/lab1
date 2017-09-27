@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraCharts;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Graphic
 {
+    [Serializable]
     public abstract class Function :List<PointF>
     {
         public float Left { get; set; }
@@ -14,22 +16,39 @@ namespace Graphic
         public float QuantumAbs { get; set; }
         public float QuantumOrd { get; set; }
 
-        protected float T;
+        //public Series Serieses;
 
-        public abstract event EventHandler<FuncEventArgs> OnNewPoint;
+        protected ViewType olviewType;
 
-        public void Build()
-        {           
-            if (QuantumAbs!=-1&&QuantumOrd!=-1)
-            {                
-                FillList();
-            }            
+        public Series Series { get; set; }
+        
+
+        public void DestroySeries()
+        {
+            Series = new Series();
+            Series.ChangeView(olviewType);
+            Series.Name = GetType().Name;
         }
 
-        protected abstract void FillList();       
+
+        protected float T;
+        public abstract event EventHandler<FuncEventArgs> OnNewPoint;
+        public void Build()
+        {
+            if (QuantumAbs != -1 && QuantumOrd != -1)
+            {
+                FillList();
+            }
+        }
+
+        public Function()
+        {
+            Series = new DevExpress.XtraCharts.Series();
+        }
+        protected abstract void FillList();
     }
 
-    public class FuncEventArgs:EventArgs
+    public class FuncEventArgs :EventArgs
     {
         public PointF point { get; private set; }
 
@@ -39,6 +58,6 @@ namespace Graphic
         }
     }
 
-    
+
 
 }
