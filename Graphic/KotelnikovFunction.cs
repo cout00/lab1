@@ -28,6 +28,7 @@ namespace Graphic
                 {
                     if (i - item.X==0)
                     {
+                        sum++;
                         continue;
                     }
                     var coeff = (float)(Math.PI * (i - item.X)/InpFunction.QuantumAbs);

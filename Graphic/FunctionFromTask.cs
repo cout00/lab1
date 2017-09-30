@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using static alglib;
 
 namespace Graphic
 {
@@ -22,9 +22,11 @@ namespace Graphic
 
         protected override void FillList()
         {
+
+            //
             for (float Left = this.Left; Left < Right;)
             {
-                var NotQuantedOrd = (float)Math.Sin(Left) * (float)Math.Pow(Math.E, (-Math.Sin(Left / 2)));
+                var NotQuantedOrd = (float)Math.Sin(Left) * (float)Math.Pow(Math.E, (Math.Cos(Left / 3)));
 
                 Add(new PointF(Left, NotQuantedOrd));
                 if (QuantumOrd == 0)

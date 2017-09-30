@@ -106,6 +106,7 @@ namespace Graphic
         {           
             if (e.Page == FunctionDiscret)
             {
+                
                 var func = FuncAnalog.internalDrawList.Find((a) => { return a.Series.Name == typeof(FunctionFromTask).Name;});
                 if (func==null||FuncDiscretn.Equals(func))
                 {
@@ -117,6 +118,19 @@ namespace Graphic
                 FuncDiscretn.AddFunc(fc);
                 FuncDiscretn.AddFunc(func);
                 FuncDiscretn.DrawFunc();                
+            }
+            if (e.Page == FunctionACH)
+            {
+                var func = FuncDiscretn.internalDrawList.Find((a) => { return a.Series.Name == typeof(FunctionFromTaskQuantum).Name; });
+                if (func == null || FuncAch.Equals(func))
+                {
+                    return;
+                }
+                ACHFunction fun = new ACHFunction(func);
+                fun.DestroySeries();
+                FuncAch.AddFunc(fun);
+                FuncAch.DrawFunc();
+
             }
         }
 
