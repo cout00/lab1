@@ -115,8 +115,10 @@ namespace Graphic
                 FunctionFromTaskQuantum fc = new FunctionFromTaskQuantum(func);
                 fc.QuantumOrd=TryConvert(ConrainsQVOrd);
                 func.DestroySeries();
+                KotelnikovFunction kf = new KotelnikovFunction(fc);
                 FuncDiscretn.AddFunc(fc);
                 FuncDiscretn.AddFunc(func);
+                FuncDiscretn.AddFunc(kf);
                 FuncDiscretn.DrawFunc();                
             }
             if (e.Page == FunctionACH)

@@ -38,21 +38,6 @@ namespace Graphic
                 }
                 CallBack?.Invoke(i, new Complex(carr[i+ carr.Count() / 2].x, carr[i+ carr.Count() / 2].y));
             }
-
-
-            //for (int u = 0; u < count; u++)
-            //{
-            //    Complex summa = new Complex();
-            //    for (int k = 0; k < func.Count; k++)
-            //    {
-            //        Complex S = new Complex(func[k].X, func[k].Y);
-            //        double koeff = -2 * Math.PI * u * k / func.Count;
-            //        Complex e = new Complex(Math.Cos(koeff), Math.Sin(koeff));
-            //        summa += (S * e);
-            //    }
-            //    arr.Add(summa / func.Count);
-            //    CallBack?.Invoke(u,summa / func.Count);
-            //}
             return arr;
         }
 

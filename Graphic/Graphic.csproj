@@ -81,6 +81,7 @@
     <Compile Include="FunctionFromTask.cs" />
     <Compile Include="FunctionFromTaskQuantum.cs" />
     <Compile Include="KotelnikovFunction.cs" />
+    <Compile Include="KotelnikovSmooth.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ChartForFunction.resx">
