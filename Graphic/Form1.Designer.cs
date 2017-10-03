@@ -58,15 +58,11 @@
             this.FunctionACH = new DevExpress.XtraBars.TabFormPage();
             this.xtraScrollableControl4 = new DevExpress.XtraEditors.XtraScrollableControl();
             this.FuncAch = new Graphic.ChartForFunction();
-            this.tabFormPage2 = new DevExpress.XtraBars.TabFormPage();
+            this.FunctionMistakes = new DevExpress.XtraBars.TabFormPage();
             this.xtraScrollableControl5 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.FuncCotelnikov = new Graphic.ChartForFunction();
             this.tabFormPage3 = new DevExpress.XtraBars.TabFormPage();
-            this.xtraScrollableControl6 = new DevExpress.XtraEditors.XtraScrollableControl();
             this.tabFormPage1 = new DevExpress.XtraBars.TabFormPage();
-            this.chartForFunction1 = new Graphic.ChartForFunction();
-            this.chartForFunction2 = new Graphic.ChartForFunction();
-            this.chartForFunction3 = new Graphic.ChartForFunction();
-            this.chartForFunction4 = new Graphic.ChartForFunction();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).BeginInit();
             this.xtraScrollableControl2.SuspendLayout();
@@ -82,6 +78,7 @@
             this.panelControl1.SuspendLayout();
             this.xtraScrollableControl3.SuspendLayout();
             this.xtraScrollableControl4.SuspendLayout();
+            this.xtraScrollableControl5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabFormControl1
@@ -90,15 +87,13 @@
             this.barStaticItem1});
             this.tabFormControl1.Location = new System.Drawing.Point(0, 0);
             this.tabFormControl1.Manager = this.tabFormDefaultManager1;
-            this.tabFormControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabFormControl1.Name = "tabFormControl1";
             this.tabFormControl1.Pages.Add(this.FuncStandart);
             this.tabFormControl1.Pages.Add(this.FunctionDiscret);
             this.tabFormControl1.Pages.Add(this.FunctionACH);
-            this.tabFormControl1.Pages.Add(this.tabFormPage2);
-            this.tabFormControl1.Pages.Add(this.tabFormPage3);
-            this.tabFormControl1.SelectedPage = this.FunctionDiscret;
-            this.tabFormControl1.Size = new System.Drawing.Size(1059, 61);
+            this.tabFormControl1.Pages.Add(this.FunctionMistakes);
+            this.tabFormControl1.SelectedPage = this.FunctionACH;
+            this.tabFormControl1.Size = new System.Drawing.Size(908, 50);
             this.tabFormControl1.TabForm = this;
             this.tabFormControl1.TabIndex = 0;
             this.tabFormControl1.TabStop = false;
@@ -128,33 +123,29 @@
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 61);
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlTop.Size = new System.Drawing.Size(1059, 0);
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 50);
+            this.barDockControlTop.Size = new System.Drawing.Size(908, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 613);
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1059, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 688);
+            this.barDockControlBottom.Size = new System.Drawing.Size(908, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 61);
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 552);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 50);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 638);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1059, 61);
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 552);
+            this.barDockControlRight.Location = new System.Drawing.Point(908, 50);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 638);
             // 
             // FuncStandart
             // 
@@ -167,10 +158,10 @@
             this.xtraScrollableControl2.Controls.Add(this.groupControl1);
             this.xtraScrollableControl2.Controls.Add(this.panelControl1);
             this.xtraScrollableControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraScrollableControl2.Location = new System.Drawing.Point(0, 61);
+            this.xtraScrollableControl2.Location = new System.Drawing.Point(0, 50);
             this.xtraScrollableControl2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.xtraScrollableControl2.Name = "xtraScrollableControl2";
-            this.xtraScrollableControl2.Size = new System.Drawing.Size(1059, 552);
+            this.xtraScrollableControl2.Size = new System.Drawing.Size(908, 638);
             this.xtraScrollableControl2.TabIndex = 6;
             // 
             // groupControl1
@@ -182,7 +173,7 @@
             this.groupControl1.Location = new System.Drawing.Point(743, 0);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(316, 552);
+            this.groupControl1.Size = new System.Drawing.Size(165, 638);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Параметры";
             // 
@@ -217,7 +208,7 @@
             this.ConrainsQVOrd.Location = new System.Drawing.Point(64, 153);
             this.ConrainsQVOrd.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ConrainsQVOrd.Name = "ConrainsQVOrd";
-            this.ConrainsQVOrd.Size = new System.Drawing.Size(136, 22);
+            this.ConrainsQVOrd.Size = new System.Drawing.Size(136, 20);
             this.ConrainsQVOrd.TabIndex = 2;
             this.ConrainsQVOrd.EditValueChanged += new System.EventHandler(this.OnChangeHandler);
             // 
@@ -227,7 +218,7 @@
             this.ConrainsQVAbs.Location = new System.Drawing.Point(64, 84);
             this.ConrainsQVAbs.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ConrainsQVAbs.Name = "ConrainsQVAbs";
-            this.ConrainsQVAbs.Size = new System.Drawing.Size(136, 22);
+            this.ConrainsQVAbs.Size = new System.Drawing.Size(136, 20);
             this.ConrainsQVAbs.TabIndex = 3;
             this.ConrainsQVAbs.EditValueChanged += new System.EventHandler(this.OnChangeHandler);
             // 
@@ -236,7 +227,7 @@
             this.labelControl4.Location = new System.Drawing.Point(63, 54);
             this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(65, 16);
+            this.labelControl4.Size = new System.Drawing.Size(55, 13);
             this.labelControl4.TabIndex = 4;
             this.labelControl4.Text = "По абсцисс";
             // 
@@ -245,7 +236,7 @@
             this.labelControl5.Location = new System.Drawing.Point(64, 124);
             this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(67, 16);
+            this.labelControl5.Size = new System.Drawing.Size(59, 13);
             this.labelControl5.TabIndex = 4;
             this.labelControl5.Text = "По ординат";
             // 
@@ -271,7 +262,7 @@
             this.ConrainsRight.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ConrainsRight.MenuManager = this.tabFormDefaultManager1;
             this.ConrainsRight.Name = "ConrainsRight";
-            this.ConrainsRight.Size = new System.Drawing.Size(136, 22);
+            this.ConrainsRight.Size = new System.Drawing.Size(136, 20);
             this.ConrainsRight.TabIndex = 2;
             this.ConrainsRight.EditValueChanged += new System.EventHandler(this.OnChangeHandler);
             // 
@@ -282,7 +273,7 @@
             this.ConrainsLeft.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ConrainsLeft.MenuManager = this.tabFormDefaultManager1;
             this.ConrainsLeft.Name = "ConrainsLeft";
-            this.ConrainsLeft.Size = new System.Drawing.Size(136, 22);
+            this.ConrainsLeft.Size = new System.Drawing.Size(136, 20);
             this.ConrainsLeft.TabIndex = 3;
             this.ConrainsLeft.EditValueChanged += new System.EventHandler(this.OnChangeHandler);
             // 
@@ -291,7 +282,7 @@
             this.labelControl3.Location = new System.Drawing.Point(65, 112);
             this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(43, 16);
+            this.labelControl3.Size = new System.Drawing.Size(37, 13);
             this.labelControl3.TabIndex = 4;
             this.labelControl3.Text = "Справа";
             // 
@@ -300,7 +291,7 @@
             this.labelControl1.Location = new System.Drawing.Point(64, 42);
             this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(36, 16);
+            this.labelControl1.Size = new System.Drawing.Size(31, 13);
             this.labelControl1.TabIndex = 4;
             this.labelControl1.Text = "Слева";
             // 
@@ -312,15 +303,17 @@
             this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(7);
-            this.panelControl1.Size = new System.Drawing.Size(743, 552);
+            this.panelControl1.Size = new System.Drawing.Size(743, 638);
             this.panelControl1.TabIndex = 1;
             // 
             // FuncAnalog
             // 
             this.FuncAnalog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FuncAnalog.Loaded = true;
             this.FuncAnalog.Location = new System.Drawing.Point(9, 9);
+            this.FuncAnalog.Margin = new System.Windows.Forms.Padding(2);
             this.FuncAnalog.Name = "FuncAnalog";
-            this.FuncAnalog.Size = new System.Drawing.Size(725, 534);
+            this.FuncAnalog.Size = new System.Drawing.Size(725, 620);
             this.FuncAnalog.TabIndex = 0;
             // 
             // FunctionDiscret
@@ -333,18 +326,22 @@
             // 
             this.xtraScrollableControl3.Controls.Add(this.FuncDiscretn);
             this.xtraScrollableControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraScrollableControl3.Location = new System.Drawing.Point(0, 61);
+            this.xtraScrollableControl3.Location = new System.Drawing.Point(0, 50);
+            this.xtraScrollableControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraScrollableControl3.Name = "xtraScrollableControl3";
-            this.xtraScrollableControl3.Size = new System.Drawing.Size(1059, 552);
+            this.xtraScrollableControl3.Size = new System.Drawing.Size(908, 638);
             this.xtraScrollableControl3.TabIndex = 7;
             // 
             // FuncDiscretn
             // 
             this.FuncDiscretn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FuncDiscretn.Loaded = true;
             this.FuncDiscretn.Location = new System.Drawing.Point(0, 0);
+            this.FuncDiscretn.Margin = new System.Windows.Forms.Padding(2);
             this.FuncDiscretn.Name = "FuncDiscretn";
-            this.FuncDiscretn.Size = new System.Drawing.Size(1059, 552);
+            this.FuncDiscretn.Size = new System.Drawing.Size(908, 638);
             this.FuncDiscretn.TabIndex = 0;
+            this.FuncDiscretn.Load += new System.EventHandler(this.FuncDiscretn_Load_1);
             // 
             // FunctionACH
             // 
@@ -356,93 +353,69 @@
             // 
             this.xtraScrollableControl4.Controls.Add(this.FuncAch);
             this.xtraScrollableControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraScrollableControl4.Location = new System.Drawing.Point(0, 61);
+            this.xtraScrollableControl4.Location = new System.Drawing.Point(0, 50);
             this.xtraScrollableControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraScrollableControl4.Name = "xtraScrollableControl4";
-            this.xtraScrollableControl4.Size = new System.Drawing.Size(1059, 552);
+            this.xtraScrollableControl4.Size = new System.Drawing.Size(908, 638);
             this.xtraScrollableControl4.TabIndex = 8;
             // 
             // FuncAch
             // 
             this.FuncAch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FuncAch.Loaded = true;
             this.FuncAch.Location = new System.Drawing.Point(0, 0);
+            this.FuncAch.Margin = new System.Windows.Forms.Padding(2);
             this.FuncAch.Name = "FuncAch";
-            this.FuncAch.Size = new System.Drawing.Size(1059, 552);
+            this.FuncAch.Size = new System.Drawing.Size(908, 638);
             this.FuncAch.TabIndex = 0;
+            this.FuncAch.Load += new System.EventHandler(this.FuncAch_Load);
             // 
-            // tabFormPage2
+            // FunctionMistakes
             // 
-            this.tabFormPage2.ContentContainer = this.xtraScrollableControl5;
-            this.tabFormPage2.Name = "tabFormPage2";
-            this.tabFormPage2.Text = "Page 3";
+            this.FunctionMistakes.ContentContainer = this.xtraScrollableControl5;
+            this.FunctionMistakes.Name = "FunctionMistakes";
+            this.FunctionMistakes.Text = "Ошибки";
             // 
             // xtraScrollableControl5
             // 
+            this.xtraScrollableControl5.Controls.Add(this.FuncCotelnikov);
             this.xtraScrollableControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraScrollableControl5.Location = new System.Drawing.Point(0, 61);
+            this.xtraScrollableControl5.Location = new System.Drawing.Point(0, 50);
             this.xtraScrollableControl5.Name = "xtraScrollableControl5";
-            this.xtraScrollableControl5.Size = new System.Drawing.Size(1059, 552);
+            this.xtraScrollableControl5.Size = new System.Drawing.Size(908, 638);
             this.xtraScrollableControl5.TabIndex = 9;
+            // 
+            // FuncCotelnikov
+            // 
+            this.FuncCotelnikov.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FuncCotelnikov.Loaded = true;
+            this.FuncCotelnikov.Location = new System.Drawing.Point(0, 0);
+            this.FuncCotelnikov.Margin = new System.Windows.Forms.Padding(2);
+            this.FuncCotelnikov.Name = "FuncCotelnikov";
+            this.FuncCotelnikov.Size = new System.Drawing.Size(908, 638);
+            this.FuncCotelnikov.TabIndex = 0;
             // 
             // tabFormPage3
             // 
-            this.tabFormPage3.ContentContainer = this.xtraScrollableControl6;
             this.tabFormPage3.Name = "tabFormPage3";
             this.tabFormPage3.Text = "Page 4";
-            // 
-            // xtraScrollableControl6
-            // 
-            this.xtraScrollableControl6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraScrollableControl6.Location = new System.Drawing.Point(0, 61);
-            this.xtraScrollableControl6.Name = "xtraScrollableControl6";
-            this.xtraScrollableControl6.Size = new System.Drawing.Size(1059, 552);
-            this.xtraScrollableControl6.TabIndex = 10;
             // 
             // tabFormPage1
             // 
             this.tabFormPage1.Name = "tabFormPage1";
             this.tabFormPage1.Text = "Page 0";
             // 
-            // chartForFunction1
-            // 
-            this.chartForFunction1.Location = new System.Drawing.Point(0, 0);
-            this.chartForFunction1.Name = "chartForFunction1";
-            this.chartForFunction1.Size = new System.Drawing.Size(476, 360);
-            this.chartForFunction1.TabIndex = 0;
-            // 
-            // chartForFunction2
-            // 
-            this.chartForFunction2.Location = new System.Drawing.Point(0, 0);
-            this.chartForFunction2.Name = "chartForFunction2";
-            this.chartForFunction2.Size = new System.Drawing.Size(476, 360);
-            this.chartForFunction2.TabIndex = 0;
-            // 
-            // chartForFunction3
-            // 
-            this.chartForFunction3.Location = new System.Drawing.Point(0, 0);
-            this.chartForFunction3.Name = "chartForFunction3";
-            this.chartForFunction3.Size = new System.Drawing.Size(476, 360);
-            this.chartForFunction3.TabIndex = 0;
-            // 
-            // chartForFunction4
-            // 
-            this.chartForFunction4.Location = new System.Drawing.Point(0, 0);
-            this.chartForFunction4.Name = "chartForFunction4";
-            this.chartForFunction4.Size = new System.Drawing.Size(476, 360);
-            this.chartForFunction4.TabIndex = 0;
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1059, 613);
+            this.ClientSize = new System.Drawing.Size(908, 688);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Controls.Add(this.xtraScrollableControl3);
+            this.Controls.Add(this.xtraScrollableControl4);
             this.Controls.Add(this.tabFormControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.TabFormControl = this.tabFormControl1;
             this.Text = "Form1";
@@ -463,6 +436,7 @@
             this.panelControl1.ResumeLayout(false);
             this.xtraScrollableControl3.ResumeLayout(false);
             this.xtraScrollableControl4.ResumeLayout(false);
+            this.xtraScrollableControl5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -499,16 +473,20 @@
         private DevExpress.XtraBars.TabFormPage FunctionACH;
         private System.Windows.Forms.Button button1;
         private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControl6;
-        private DevExpress.XtraBars.TabFormPage tabFormPage2;
+        private DevExpress.XtraBars.TabFormPage FunctionMistakes;
         private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControl5;
         private DevExpress.XtraBars.TabFormPage tabFormPage3;
         private ChartForFunction chartForFunction1;
         private ChartForFunction chartForFunction2;
         private ChartForFunction chartForFunction3;
         private ChartForFunction chartForFunction4;
-        private ChartForFunction FuncDiscretn;
+        //private ChartForFunction FuncDiscretn;
+        //private ChartForFunction FuncAnalog;
+        //private ChartForFunction FuncAch;
         private ChartForFunction FuncAnalog;
+        private ChartForFunction FuncDiscretn;
         private ChartForFunction FuncAch;
+        private ChartForFunction FuncCotelnikov;
     }
 }
 

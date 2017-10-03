@@ -20,6 +20,8 @@ namespace Graphic
 
         protected ViewType olviewType;
 
+        public string FunctionName;
+
         public Series Series { get; set; }
         
 
@@ -35,6 +37,7 @@ namespace Graphic
         public abstract event EventHandler<FuncEventArgs> OnNewPoint;
         public void Build()
         {
+            Series.Tag = GetType().Name;
             if (QuantumAbs != -1 && QuantumOrd != -1)
             {
                 FillList();

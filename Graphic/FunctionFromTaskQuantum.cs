@@ -15,7 +15,8 @@ namespace Graphic
         public FunctionFromTaskQuantum(Function inpF):base()
         {
             AddRange(inpF);
-            Series.Name = GetType().Name;
+            FunctionName = "Функция дискретная по амплитуде и времени";
+            Series.Name = FunctionName;
             Series.ChangeView(ViewType.Line);
             olviewType = ViewType.Line;
             Left = inpF.Left;

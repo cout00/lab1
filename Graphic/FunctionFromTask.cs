@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static alglib;
 
 namespace Graphic
 {
@@ -13,7 +12,8 @@ namespace Graphic
     {
         public FunctionFromTask() : base()
         {
-            Series.Name = GetType().Name;
+            FunctionName = "Функция дискретная по времени";
+            Series.Name = FunctionName;
             Series.ChangeView(ViewType.Spline);
             olviewType = ViewType.Spline;
         }

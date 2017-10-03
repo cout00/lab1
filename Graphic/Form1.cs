@@ -33,7 +33,7 @@ namespace Graphic
 
         void DrawFunction(Function inpFunc, Series whereDraw, bool isInterpolated)
         {
-            
+
             //whereDraw.Points.Clear();
 
             //inpFunc.OnNewPoint += (sen, e) =>
@@ -103,35 +103,54 @@ namespace Graphic
         }
 
         private void tabFormControl1_SelectedPageChanged(object sender, TabFormSelectedPageChangedEventArgs e)
-        {           
+        {
             if (e.Page == FunctionDiscret)
             {
-                
-                var func = FuncAnalog.internalDrawList.Find((a) => { return a.Series.Name == typeof(FunctionFromTask).Name;});
-                if (func==null||FuncDiscretn.Equals(func))
+
+                var func = FuncAnalog.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionFromTask).Name; });
+                if (func == null || FuncDiscretn.Equals(func))
                 {
                     return;
                 }
                 FunctionFromTaskQuantum fc = new FunctionFromTaskQuantum(func);
-                fc.QuantumOrd=TryConvert(ConrainsQVOrd);
+                fc.QuantumOrd = TryConvert(ConrainsQVOrd);
                 func.DestroySeries();
                 FuncDiscretn.AddFunc(fc);
                 FuncDiscretn.AddFunc(func);
-                FuncDiscretn.DrawFunc();                
+                KotelnikovFunction kf = new KotelnikovFunction(fc);
+                FuncDiscretn.AddFunc(kf);
+                FuncDiscretn.DrawFunc();
+
             }
             if (e.Page == FunctionACH)
             {
+
                 var func = FuncDiscretn.internalDrawList.Find((a) => { return a.Series.Name == typeof(FunctionFromTaskQuantum).Name; });
                 if (func == null || FuncAch.Equals(func))
                 {
                     return;
                 }
                 ACHFunction fun = new ACHFunction(func);
-                fun.DestroySeries();
                 FuncAch.AddFunc(fun);
+                FCHFunction ffun = new FCHFunction(func);
+                FuncAch.AddFunc(ffun);
                 FuncAch.DrawFunc();
 
             }
+            if (e.Page == FunctionMistakes)
+            {
+
+                //var func = FuncDiscretn.internalDrawList.Find((a) => { return a.Series.Name == typeof(FunctionFromTaskQuantum).Name; });
+                //if (func == null || FuncAch.Equals(func))
+                //{
+                //    return;
+                //}
+                
+                //FuncCotelnikov.DrawFunc();
+
+            }
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -145,12 +164,13 @@ namespace Graphic
             FuncAnalog.DrawFunc();
         }
 
-        private void FuncDiscretn_Load(object sender, EventArgs e)
+
+        private void FuncDiscretn_Load_1(object sender, EventArgs e)
         {
 
         }
 
-        private void FuncAnalog_Load(object sender, EventArgs e)
+        private void FuncAch_Load(object sender, EventArgs e)
         {
 
         }
