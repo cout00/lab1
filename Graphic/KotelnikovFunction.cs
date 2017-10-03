@@ -13,14 +13,17 @@ namespace Graphic
         double nu;
         public KotelnikovFunction(Function InpFunction)
         {
+            FunctionName = "Восстановленная функция";
             this.InpFunction = InpFunction;
-            nu = (Math.Abs(InpFunction.Left) + Math.Abs(InpFunction.Right)) / InpFunction.QuantumAbs;
+            nu = (Math.Abs(InpFunction.Right) - Math.Abs(InpFunction.Left)) / InpFunction.QuantumAbs;
         }
-
+        public override event EventHandler<FuncEventArgs> OnNewPoint;
         protected override void FillList()
         {
-                       
-            float omega = (float)((2 * Math.PI) / T);
+            Left = InpFunction.Left;
+            Right = InpFunction.Right;
+            QuantumAbs = InpFunction.QuantumAbs / 2;
+            float omega = (float)((2 * Math.PI) *nu);
             for (float i = Left; i < Right; i += QuantumAbs)
             {
                 var sum = 0F;
@@ -28,15 +31,15 @@ namespace Graphic
                 {
                     if (i - item.X==0)
                     {
-                        sum++;
+                        //sum++;
                         continue;
                     }
-                    var coeff = (float)(Math.PI * (i - item.X)/InpFunction.QuantumAbs);
+                    var coeff = (float)(omega * (i - item.X));
                     sum += item.Y * ((float)Math.Sin(coeff)/coeff);
                 }
+                OnNewPoint?.Invoke(this, new FuncEventArgs(new System.Drawing.PointF(i, sum)));
                 Add(new System.Drawing.PointF(i, sum));
             }
-            var me = 1 ;
         }
     }
 }

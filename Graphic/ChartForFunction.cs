@@ -13,7 +13,9 @@ namespace Graphic
 {
     public partial class ChartForFunction :UserControl, IEquatable<Function>
     {
-        //[Serializable]
+        public bool Loaded { get; set; } = false;
+
+
         public List<Function> internalDrawList;
         public void AddFunc(Function inpFunction)
         {
@@ -29,26 +31,35 @@ namespace Graphic
 
         public void DrawFunc()
         {
-            chart.Series.Clear();
-            chart.BeginInit();
-            foreach (var item in internalDrawList)
-            {
-                chart.Series.Add(item.Series);
-                item.Series.Points.Clear();
-                item.OnNewPoint += (sen, arg) =>
+            Action asyncAction = () => {
+                chart.Series.Clear();
+                chart.BeginInit();
+                foreach (var item in internalDrawList)
                 {
-                    
+                    chart.Series.Add(item.Series);
+                    item.Series.Points.Clear();
+                    item.OnNewPoint += (sen, arg) =>
+                    {
                         chart.BeginInvoke((Action)(() =>
                         {
                             chart.Series[item.Series.Name].Points.Add(arg.point.ToSeriesPoint());
                             chart.Refresh();
                         }));
-                    
-                    
-                };
-                item.Build();
+                    };
+                    item.Build();
+                }
+                chart.EndInit();
+            };
+
+
+            if (chart.IsHandleCreated)
+            {
+                asyncAction();
             }
-            chart.EndInit();
+            else
+                chart.HandleCreated += (sen, arg) => { asyncAction(); };
+
+            
         }
 
         public bool Equals(Function other)
@@ -70,6 +81,15 @@ namespace Graphic
             chart.RefreshDataOnRepaint = false;
             chart.RuntimeHitTesting = false;
             internalDrawList = new List<Function>();
+        }
+
+        private void chart_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void ChartForFunction_Load(object sender, EventArgs e)
+        {
+            Loaded = true;
         }
     }
 }
