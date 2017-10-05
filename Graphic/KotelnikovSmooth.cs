@@ -14,21 +14,22 @@ namespace Graphic
 
         public KotelnikovSmooth(KotelnikovFunction inpF)
         {
-            Series.Name = GetType().Name;
+            FunctionName = "Гладкая восстановленная";
+            Series.Name = FunctionName;
             Series.ChangeView(ViewType.Spline);
             olviewType = ViewType.Spline;
             inpFunc = inpF;
         }
         protected override void FillList()
         {
-            var max = inpFunc.Select(a => a.Y).Max()*0.01;
-
+            var max = inpFunc.Select(a => a.Y).Max()*0.001;
+            var min = max * 0.0001;
             for (int i = 0; i < inpFunc.Count; i++)
             {
-                if (inpFunc[i].Y<max)
+                if (Math.Abs(inpFunc[i].Y)>max|| Math.Abs(inpFunc[i].Y)<min)
                 {
                     Add(inpFunc[i]);
-                    OnNewPoint?.Invoke(this, new FuncEventArgs(inpFunc[i]));
+                    //OnNewPoint?.Invoke(this, new FuncEventArgs(inpFunc[i]));
                 }
             }
         }

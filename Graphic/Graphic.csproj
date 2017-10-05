@@ -81,10 +81,12 @@
     <Compile Include="Function.cs" />
     <Compile Include="FunctionFromTask.cs" />
     <Compile Include="FunctionFromTaskQuantum.cs" />
+    <Compile Include="FunctionQuantMistake.cs" />
     <Compile Include="KotelnikovFunction.cs" />
     <Compile Include="KotelnikovSmooth.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SquareAproximationMistakeFunction.cs" />
     <EmbeddedResource Include="ChartForFunction.resx">
       <DependentUpon>ChartForFunction.cs</DependentUpon>
     </EmbeddedResource>

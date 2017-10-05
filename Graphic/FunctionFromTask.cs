@@ -20,13 +20,15 @@ namespace Graphic
 
         public override event EventHandler<FuncEventArgs> OnNewPoint;
 
+        
+
         protected override void FillList()
         {
 
             //
             for (float Left = this.Left; Left < Right;)
-            {
-                var NotQuantedOrd = (float)Math.Sin(Left) * (float)Math.Pow(Math.E, (Math.Cos(Left / 3)));
+            {//(float)Math.Pow(Math.Cos(5 * Left), 2) * (float)Math.Exp(-Math.Sin(Left/2));
+                var NotQuantedOrd = GetInputFunction(Left);
 
                 Add(new PointF(Left, NotQuantedOrd));
                 if (QuantumOrd == 0)

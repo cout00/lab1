@@ -11,10 +11,11 @@ namespace Graphic
     {
         Function InpFunction;
         double nu;
-        public KotelnikovFunction(Function InpFunction)
+        public KotelnikovFunction(Function InpFunction):base()
         {
             FunctionName = "Восстановленная функция";
             this.InpFunction = InpFunction;
+            Series.Name = FunctionName;
             nu = (Math.Abs(InpFunction.Right) - Math.Abs(InpFunction.Left)) / InpFunction.QuantumAbs;
         }
         public override event EventHandler<FuncEventArgs> OnNewPoint;
@@ -22,7 +23,7 @@ namespace Graphic
         {
             Left = InpFunction.Left;
             Right = InpFunction.Right;
-            QuantumAbs = InpFunction.QuantumAbs / 2;
+            QuantumAbs = InpFunction.QuantumAbs/2;
             float omega = (float)((2 * Math.PI) *nu);
             for (float i = Left; i < Right; i += QuantumAbs)
             {

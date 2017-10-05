@@ -11,10 +11,11 @@ namespace Graphic
     public class FunctionFromTaskQuantum:Function
     {
         public override event EventHandler<FuncEventArgs> OnNewPoint;
+        Function inpf;
 
         public FunctionFromTaskQuantum(Function inpF):base()
         {
-            AddRange(inpF);
+            inpf = inpF;
             FunctionName = "Функция дискретная по амплитуде и времени";
             Series.Name = FunctionName;
             Series.ChangeView(ViewType.Line);
@@ -27,6 +28,7 @@ namespace Graphic
 
         protected override void FillList()
         {
+            AddRange(inpf);
             if (QuantumOrd != 0)
             {
                 var MaxOrd = this.Max((d) => d.Y);
@@ -70,7 +72,11 @@ namespace Graphic
                             }
                         }
                     }
-                    OnNewPoint?.Invoke(this, new FuncEventArgs(this[i]));
+                    if (!OnlyResult)
+                    {
+                        OnNewPoint?.Invoke(this, new FuncEventArgs(this[i]));
+                    }
+                    
                 }
             }
         }

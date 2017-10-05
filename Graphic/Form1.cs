@@ -18,7 +18,7 @@ namespace Graphic
         {
             InitializeComponent();
             OnChangeHandler(null, null);
-
+            
         }
 
         public float TryConvert(TextEdit control)
@@ -33,7 +33,7 @@ namespace Graphic
 
         void DrawFunction(Function inpFunc, Series whereDraw, bool isInterpolated)
         {
-
+            
             //whereDraw.Points.Clear();
 
             //inpFunc.OnNewPoint += (sen, e) =>
@@ -102,7 +102,7 @@ namespace Graphic
 
         }
 
-        private void tabFormControl1_SelectedPageChanged(object sender, TabFormSelectedPageChangedEventArgs e)
+        public void tabFormControl1_SelectedPageChanged(object sender, TabFormSelectedPageChangedEventArgs e)
         {
             if (e.Page == FunctionDiscret)
             {
@@ -117,39 +117,67 @@ namespace Graphic
                 func.DestroySeries();
                 FuncDiscretn.AddFunc(fc);
                 FuncDiscretn.AddFunc(func);
-                KotelnikovFunction kf = new KotelnikovFunction(fc);
+                KotelnikovFunction kf = new KotelnikovFunction(func);
                 FuncDiscretn.AddFunc(kf);
+                
                 FuncDiscretn.DrawFunc();
 
             }
             if (e.Page == FunctionACH)
             {
 
-                var func = FuncDiscretn.internalDrawList.Find((a) => { return a.Series.Name == typeof(FunctionFromTaskQuantum).Name; });
+                var func = FuncDiscretn.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionFromTaskQuantum).Name; });
                 if (func == null || FuncAch.Equals(func))
                 {
                     return;
                 }
+                var func1 = FuncAnalog.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionFromTask).Name; });
+                if (func1 == null)
+                {
+                    return;
+                }
                 ACHFunction fun = new ACHFunction(func);
+                ACHFunction fun1 = new ACHFunction(func1);
+                FuncAch.AddFunc(fun1);
                 FuncAch.AddFunc(fun);
                 FCHFunction ffun = new FCHFunction(func);
                 FuncAch.AddFunc(ffun);
+                FCHFunction ffun1 = new FCHFunction(func1);
+                FuncAch.AddFunc(ffun1);
                 FuncAch.DrawFunc();
 
             }
             if (e.Page == FunctionMistakes)
-            {
-
-                //var func = FuncDiscretn.internalDrawList.Find((a) => { return a.Series.Name == typeof(FunctionFromTaskQuantum).Name; });
-                //if (func == null || FuncAch.Equals(func))
-                //{
-                //    return;
-                //}
-                
-                //FuncCotelnikov.DrawFunc();
-
+            {                
+                var func = (FunctionFromTaskQuantum)FuncDiscretn.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionFromTaskQuantum).Name; });
+                if (func == null)
+                {
+                    return;
+                }
+                var funcan = FuncDiscretn.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionFromTask).Name; });
+                if (funcan == null || FuncMistakes.Equals(funcan))
+                {
+                    return;
+                }
+                func.DestroySeries();
+                funcan.DestroySeries();
+                SquareAproximationMistakeFunction apx = new SquareAproximationMistakeFunction(func);
+                FuncMistakes.AddFunc(funcan);
+                FuncMistakes.AddFunc(func);
+                FuncMistakes.AddFunc(apx);
+                FuncMistakes.DrawFunc();
             }
-
+            if (e.Page==FunctionQMistake)
+            {
+                var funcan = FuncDiscretn.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionFromTask).Name; });
+                if (funcan == null)
+                {
+                    return;
+                }
+                FunctionQuantMistake fq = new FunctionQuantMistake(funcan);
+                FuncQMistake.AddFunc(fq);
+                FuncQMistake.DrawFunc();
+            }
 
         }
 

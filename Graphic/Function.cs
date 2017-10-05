@@ -16,6 +16,7 @@ namespace Graphic
         public float QuantumAbs { get; set; }
         public float QuantumOrd { get; set; }
 
+        public Boolean OnlyResult { get; set; } = false;
         //public Series Serieses;
 
         protected ViewType olviewType;
@@ -27,9 +28,12 @@ namespace Graphic
 
         public void DestroySeries()
         {
+            var tag = Series.Tag;
+
             Series = new Series();
             Series.ChangeView(olviewType);
-            Series.Name = GetType().Name;
+            Series.Name = FunctionName;
+            Series.Tag = tag;
         }
 
 
@@ -37,16 +41,22 @@ namespace Graphic
         public abstract event EventHandler<FuncEventArgs> OnNewPoint;
         public void Build()
         {
-            Series.Tag = GetType().Name;
             if (QuantumAbs != -1 && QuantumOrd != -1)
             {
+                Clear();
                 FillList();
             }
+            
         }
-
+        protected float GetInputFunction(float Left)
+        {
+            return (float)Math.Sin(Left) * (float)Math.Pow(Math.E, (Math.Cos(Left / 3)));
+        }
         public Function()
         {
             Series = new DevExpress.XtraCharts.Series();
+            Series.Tag = GetType().Name;
+            
         }
         protected abstract void FillList();
     }

@@ -19,7 +19,7 @@ namespace Graphic
         public List<Function> internalDrawList;
         public void AddFunc(Function inpFunction)
         {
-            var func = internalDrawList.Find((a) => { return a.Series.Name == inpFunction.Series.Name; });
+            var func = internalDrawList.Find((a) => { return (string)a.Series.Name == (string)inpFunction.Series.Name; });
             if (func != null)
             {
                 internalDrawList.Remove(func);
@@ -31,6 +31,7 @@ namespace Graphic
 
         public void DrawFunc()
         {
+            //chart.D
             Action asyncAction = () => {
                 chart.Series.Clear();
                 chart.BeginInit();
@@ -81,6 +82,7 @@ namespace Graphic
             chart.RefreshDataOnRepaint = false;
             chart.RuntimeHitTesting = false;
             internalDrawList = new List<Function>();
+            
         }
 
         private void chart_Click(object sender, EventArgs e)

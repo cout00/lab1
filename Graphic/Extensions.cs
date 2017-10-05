@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DevExpress.XtraCharts;
 using System.Windows.Forms;
 using System.Drawing;
+using static alglib;
 
 namespace Graphic
 {
@@ -16,5 +17,6 @@ namespace Graphic
             return new SeriesPoint(inpPoint.X, new object[] { ((object)(inpPoint.Y)) });
         }
 
+        
     }
 }
