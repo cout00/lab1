@@ -29,7 +29,7 @@ namespace Graphic
                 if (Math.Abs(inpFunc[i].Y)>max|| Math.Abs(inpFunc[i].Y)<min)
                 {
                     Add(inpFunc[i]);
-                    //OnNewPoint?.Invoke(this, new FuncEventArgs(inpFunc[i]));
+                    OnNewPoint?.Invoke(this, new FuncEventArgs(inpFunc[i]));
                 }
             }
         }

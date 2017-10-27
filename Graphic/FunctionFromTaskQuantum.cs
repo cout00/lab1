@@ -18,8 +18,8 @@ namespace Graphic
             inpf = inpF;
             FunctionName = "Функция дискретная по амплитуде и времени";
             Series.Name = FunctionName;
-            Series.ChangeView(ViewType.Line);
-            olviewType = ViewType.Line;
+            //Series.ChangeView(ViewType.Line);
+            olviewType = ViewType.Bar;
             Left = inpF.Left;
             Right = inpF.Right;
             QuantumAbs = inpF.QuantumAbs;

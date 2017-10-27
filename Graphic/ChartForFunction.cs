@@ -93,5 +93,11 @@ namespace Graphic
         {
             Loaded = true;
         }
+
+        private void chart_CustomPaint(object sender, CustomPaintEventArgs e)
+        {
+          //  e.Graphics.DrawRectangle(Pens.White, 0, 0, 20, 20);
+          
+        }
     }
 }

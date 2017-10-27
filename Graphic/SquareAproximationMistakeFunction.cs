@@ -16,7 +16,7 @@ namespace Graphic
             FunctionName = "Ошибка восстановления";         
             this.InpF2 = InpF2;
             Series.Name = FunctionName;
-            //Series.ChangeView(DevExpress.XtraCharts.ViewType.Spline);
+            Series.ChangeView(DevExpress.XtraCharts.ViewType.Spline);
             InpF2.Build();
             //Series.ChangeView(DevExpress.XtraCharts.ViewType.Line);
         }
@@ -25,7 +25,7 @@ namespace Graphic
         {
             foreach (var item in InpF2)
             {
-                var mistake = GetInputFunction(item.X)-item.Y;
+                var mistake =(float)Math.Pow(GetInputFunction(item.X)-item.Y,2);
                 PointF exception = new PointF(item.X, mistake);
                 Add(exception);
                 if (!OnlyResult)

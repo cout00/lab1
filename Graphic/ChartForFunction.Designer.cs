@@ -57,6 +57,7 @@
             xyDiagram1.AxisY.GridLines.MinorVisible = true;
             xyDiagram1.AxisY.Label.TextColor = System.Drawing.Color.White;
             xyDiagram1.AxisY.Title.TextColor = System.Drawing.Color.White;
+            xyDiagram1.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             xyDiagram1.DefaultPane.BackColor = System.Drawing.Color.Black;
             xyDiagram1.EnableAxisXScrolling = true;
@@ -83,6 +84,7 @@
         series1};
             this.chart.Size = new System.Drawing.Size(634, 489);
             this.chart.TabIndex = 1;
+            this.chart.CustomPaint += new DevExpress.XtraCharts.CustomPaintEventHandler(this.chart_CustomPaint);
             this.chart.Click += new System.EventHandler(this.chart_Click);
             // 
             // ChartForFunction

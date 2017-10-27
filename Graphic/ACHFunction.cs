@@ -42,8 +42,8 @@ namespace Graphic
             var nearpow = getNearTwoPow(arr1.Count);
             arr1.RemoveRange(nearpow, arr1.Count - nearpow);
             alglib.fftr1d(arr1.ToArray(), out carr);
-            var arr2 = carr.ToList().GetRange(carr.Count() / 2, carr.Count() / 2);
-            var arr3 = carr.ToList().GetRange(0, carr.Count() / 2);
+            var arr3 = carr.ToList().GetRange(carr.Count() / 2, carr.Count() / 2);
+            var arr2 = carr.ToList().GetRange(0, carr.Count() / 2);
             for (int i = 0; i < arr2.Count; i++)
             {
                 if (i == 0)

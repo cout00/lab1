@@ -26,12 +26,12 @@ namespace Graphic
         {
 
             //
-            for (float Left = this.Left; Left < Right;)
+            for (float Left = this.Left; Left <= Right;)
             {//(float)Math.Pow(Math.Cos(5 * Left), 2) * (float)Math.Exp(-Math.Sin(Left/2));
                 var NotQuantedOrd = GetInputFunction(Left);
 
                 Add(new PointF(Left, NotQuantedOrd));
-                if (QuantumOrd == 0)
+                if (QuantumOrd == 0||!OnlyResult)
                 {
                     OnNewPoint?.Invoke(this, new FuncEventArgs(new PointF(Left, NotQuantedOrd)));
                 }

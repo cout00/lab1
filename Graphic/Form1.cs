@@ -113,11 +113,15 @@ namespace Graphic
                     return;
                 }
                 FunctionFromTaskQuantum fc = new FunctionFromTaskQuantum(func);
-                fc.QuantumOrd = TryConvert(ConrainsQVOrd);
+                fc.QuantumOrd = func.QuantumOrd;
                 func.DestroySeries();
                 FuncDiscretn.AddFunc(fc);
                 FuncDiscretn.AddFunc(func);
+                //func.OnlyResult = true;
                 KotelnikovFunction kf = new KotelnikovFunction(func);
+                //kf.OnlyResult = true;
+                //kf.Build();
+                //KotelnikovSmooth ks = new KotelnikovSmooth(kf);
                 FuncDiscretn.AddFunc(kf);
                 
                 FuncDiscretn.DrawFunc();
@@ -149,11 +153,12 @@ namespace Graphic
             }
             if (e.Page == FunctionMistakes)
             {                
-                var func = (FunctionFromTaskQuantum)FuncDiscretn.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionFromTaskQuantum).Name; });
+                var func = (KotelnikovFunction)FuncDiscretn.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(KotelnikovFunction).Name; });
                 if (func == null)
                 {
                     return;
                 }
+                func.Series.ChangeView(ViewType.Spline);
                 var funcan = FuncDiscretn.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionFromTask).Name; });
                 if (funcan == null || FuncMistakes.Equals(funcan))
                 {
@@ -184,10 +189,10 @@ namespace Graphic
         private void button1_Click(object sender, EventArgs e)
         {
             FunctionFromTask inpFunc = new FunctionFromTask();
-            inpFunc.Left = (float)Convert.ToDouble(ConrainsLeft.Text);
-            inpFunc.Right = (float)Convert.ToDouble(ConrainsRight.Text);
-            inpFunc.QuantumOrd = 0;//TryConvert(ConrainsQVOrd);
-            inpFunc.QuantumAbs = TryConvert(ConrainsQVAbs);
+            inpFunc.Left = 0;
+            inpFunc.Right = (float)Math.PI*6+0.1f;
+            inpFunc.QuantumOrd = 0.2f;//TryConvert(ConrainsQVOrd);
+            inpFunc.QuantumAbs = 0.2f;
             FuncAnalog.AddFunc(inpFunc);
             FuncAnalog.DrawFunc();
         }

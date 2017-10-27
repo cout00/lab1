@@ -11,35 +11,43 @@ namespace Graphic
     {
         Function InpFunction;
         double nu;
-        public KotelnikovFunction(Function InpFunction):base()
+        public KotelnikovFunction(Function InpFunction) : base()
         {
             FunctionName = "Восстановленная функция";
             this.InpFunction = InpFunction;
             Series.Name = FunctionName;
             nu = (Math.Abs(InpFunction.Right) - Math.Abs(InpFunction.Left)) / InpFunction.QuantumAbs;
+            QuantumAbs = InpFunction.QuantumAbs / 2;
+            Series.ChangeView(DevExpress.XtraCharts.ViewType.Bar);
         }
         public override event EventHandler<FuncEventArgs> OnNewPoint;
         protected override void FillList()
         {
             Left = InpFunction.Left;
             Right = InpFunction.Right;
-            QuantumAbs = InpFunction.QuantumAbs/2;
-            float omega = (float)((2 * Math.PI) *nu);
+            
+            float omega = (float)((Math.PI)/ InpFunction.QuantumAbs);//(float)((Math.PI) * nu);
             for (float i = Left; i < Right; i += QuantumAbs)
             {
-                var sum = 0F;
+                var sum = 0d;
                 foreach (var item in InpFunction)
                 {
-                    if (i - item.X==0)
+                    if (i - item.X == 0)
                     {
-                        //sum++;
+                        sum += item.Y;
                         continue;
                     }
-                    var coeff = (float)(omega * (i - item.X));
-                    sum += item.Y * ((float)Math.Sin(coeff)/coeff);
+                    var coeff = omega * (i-item.X);
+                    sum += item.Y * ((float)Math.Sin(coeff) / coeff);
                 }
-                OnNewPoint?.Invoke(this, new FuncEventArgs(new System.Drawing.PointF(i, sum)));
-                Add(new System.Drawing.PointF(i, sum));
+                if (!OnlyResult)
+                {
+                    OnNewPoint?.Invoke(this, new FuncEventArgs(new System.Drawing.PointF(i, (float)sum)));
+                }
+                
+
+                
+                Add(new System.Drawing.PointF(i, (float)sum));
             }
         }
     }

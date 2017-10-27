@@ -61,11 +61,11 @@
             this.FunctionMistakes = new DevExpress.XtraBars.TabFormPage();
             this.xtraScrollableControl5 = new DevExpress.XtraEditors.XtraScrollableControl();
             this.FuncMistakes = new Graphic.ChartForFunction();
+            this.FunctionQMistake = new DevExpress.XtraBars.TabFormPage();
+            this.xtraScrollableControl7 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.FuncQMistake = new Graphic.ChartForFunction();
             this.tabFormPage3 = new DevExpress.XtraBars.TabFormPage();
             this.tabFormPage1 = new DevExpress.XtraBars.TabFormPage();
-            this.xtraScrollableControl7 = new DevExpress.XtraEditors.XtraScrollableControl();
-            this.FunctionQMistake = new DevExpress.XtraBars.TabFormPage();
-            this.FuncQMistake = new Graphic.ChartForFunction();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).BeginInit();
             this.xtraScrollableControl2.SuspendLayout();
@@ -98,7 +98,7 @@
             this.tabFormControl1.Pages.Add(this.FunctionACH);
             this.tabFormControl1.Pages.Add(this.FunctionMistakes);
             this.tabFormControl1.Pages.Add(this.FunctionQMistake);
-            this.tabFormControl1.SelectedPage = this.FunctionQMistake;
+            this.tabFormControl1.SelectedPage = this.FuncStandart;
             this.tabFormControl1.Size = new System.Drawing.Size(1059, 61);
             this.tabFormControl1.TabForm = this;
             this.tabFormControl1.TabIndex = 0;
@@ -168,10 +168,10 @@
             this.xtraScrollableControl2.Controls.Add(this.groupControl1);
             this.xtraScrollableControl2.Controls.Add(this.panelControl1);
             this.xtraScrollableControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraScrollableControl2.Location = new System.Drawing.Point(0, 50);
+            this.xtraScrollableControl2.Location = new System.Drawing.Point(0, 61);
             this.xtraScrollableControl2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.xtraScrollableControl2.Name = "xtraScrollableControl2";
-            this.xtraScrollableControl2.Size = new System.Drawing.Size(908, 638);
+            this.xtraScrollableControl2.Size = new System.Drawing.Size(1059, 786);
             this.xtraScrollableControl2.TabIndex = 6;
             // 
             // groupControl1
@@ -183,7 +183,7 @@
             this.groupControl1.Location = new System.Drawing.Point(743, 0);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(165, 638);
+            this.groupControl1.Size = new System.Drawing.Size(316, 786);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "Параметры";
             // 
@@ -313,7 +313,7 @@
             this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Padding = new System.Windows.Forms.Padding(7);
-            this.panelControl1.Size = new System.Drawing.Size(743, 638);
+            this.panelControl1.Size = new System.Drawing.Size(743, 786);
             this.panelControl1.TabIndex = 1;
             // 
             // FuncAnalog
@@ -323,7 +323,7 @@
             this.FuncAnalog.Location = new System.Drawing.Point(9, 9);
             this.FuncAnalog.Margin = new System.Windows.Forms.Padding(2);
             this.FuncAnalog.Name = "FuncAnalog";
-            this.FuncAnalog.Size = new System.Drawing.Size(725, 620);
+            this.FuncAnalog.Size = new System.Drawing.Size(725, 768);
             this.FuncAnalog.TabIndex = 0;
             // 
             // FunctionDiscret
@@ -405,15 +405,11 @@
             this.FuncMistakes.Size = new System.Drawing.Size(1059, 786);
             this.FuncMistakes.TabIndex = 0;
             // 
-            // tabFormPage3
+            // FunctionQMistake
             // 
-            this.tabFormPage3.Name = "tabFormPage3";
-            this.tabFormPage3.Text = "Page 4";
-            // 
-            // tabFormPage1
-            // 
-            this.tabFormPage1.Name = "tabFormPage1";
-            this.tabFormPage1.Text = "Page 0";
+            this.FunctionQMistake.ContentContainer = this.xtraScrollableControl7;
+            this.FunctionQMistake.Name = "FunctionQMistake";
+            this.FunctionQMistake.Text = "График ошибки кв";
             // 
             // xtraScrollableControl7
             // 
@@ -423,12 +419,6 @@
             this.xtraScrollableControl7.Name = "xtraScrollableControl7";
             this.xtraScrollableControl7.Size = new System.Drawing.Size(1059, 786);
             this.xtraScrollableControl7.TabIndex = 10;
-            // 
-            // FunctionQMistake
-            // 
-            this.FunctionQMistake.ContentContainer = this.xtraScrollableControl7;
-            this.FunctionQMistake.Name = "FunctionQMistake";
-            this.FunctionQMistake.Text = "График ошибки кв";
             // 
             // FuncQMistake
             // 
@@ -440,6 +430,16 @@
             this.FuncQMistake.Size = new System.Drawing.Size(1059, 786);
             this.FuncQMistake.TabIndex = 0;
             // 
+            // tabFormPage3
+            // 
+            this.tabFormPage3.Name = "tabFormPage3";
+            this.tabFormPage3.Text = "Page 4";
+            // 
+            // tabFormPage1
+            // 
+            this.tabFormPage1.Name = "tabFormPage1";
+            this.tabFormPage1.Text = "Page 0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -449,7 +449,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Controls.Add(this.xtraScrollableControl7);
+            this.Controls.Add(this.xtraScrollableControl2);
             this.Controls.Add(this.tabFormControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";

@@ -50,6 +50,7 @@ namespace Graphic
         }
         protected float GetInputFunction(float Left)
         {
+            //return (float)(Math.Sin(Math.Sqrt(1 + Left * Left)));
             return (float)Math.Sin(Left) * (float)Math.Pow(Math.E, (Math.Cos(Left / 3)));
         }
         public Function()

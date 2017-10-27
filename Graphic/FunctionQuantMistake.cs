@@ -21,11 +21,23 @@ namespace Graphic
 
         protected override void FillList()
         {
-            for (float i = 0; i < Math.Abs(inpFunction.Right-inpFunction.Left); i+=0.2f)
+            for (float i = 0.1f; i < Math.Abs(inpFunction.Right-inpFunction.Left); i+=1f)
             {
-                FunctionFromTaskQuantum quantedFunc = new FunctionFromTaskQuantum(inpFunction) { QuantumOrd = i, OnlyResult = true };
-                quantedFunc.Build();
-                SquareAproximationMistakeFunction aprox = new SquareAproximationMistakeFunction(quantedFunc) { OnlyResult = true };
+                FunctionFromTask fft = new FunctionFromTask();
+                fft.Left = inpFunction.Left;
+                fft.Right = inpFunction.Right;
+                fft.QuantumAbs = i;
+                fft.QuantumOrd = inpFunction.QuantumOrd;
+                fft.OnlyResult = true;
+                fft.Build();
+                KotelnikovFunction kf = new KotelnikovFunction(fft);
+                kf.OnlyResult = true;
+                kf.Build();
+                KotelnikovFunction kf2 = new KotelnikovFunction(kf);
+                kf2.OnlyResult = true;
+                kf2.QuantumAbs = 0.4f;
+                kf2.Build();             
+                SquareAproximationMistakeFunction aprox = new SquareAproximationMistakeFunction(kf2) { OnlyResult = true };
                 aprox.Build();
                 var sum = aprox.Sum(a => Math.Abs(a.Y));
                 OnNewPoint(this, new FuncEventArgs(new System.Drawing.PointF(i, sum)));
