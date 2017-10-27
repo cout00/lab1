@@ -99,7 +99,6 @@ namespace Graphic
             //        break;
 
             //}
-
         }
 
         public void tabFormControl1_SelectedPageChanged(object sender, TabFormSelectedPageChangedEventArgs e)

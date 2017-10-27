@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraCharts;
 
-namespace Graphic
+namespace Core
 {
     public partial class ChartForFunction :UserControl, IEquatable<Function>
     {
@@ -51,16 +51,12 @@ namespace Graphic
                 }
                 chart.EndInit();
             };
-
-
             if (chart.IsHandleCreated)
             {
                 asyncAction();
             }
             else
-                chart.HandleCreated += (sen, arg) => { asyncAction(); };
-
-            
+                chart.HandleCreated += (sen, arg) => { asyncAction(); };            
         }
 
         public bool Equals(Function other)
