@@ -16,7 +16,9 @@ namespace Core
         public float QuantumAbs { get; set; }
         public float QuantumOrd { get; set; }
 
-        public Boolean OnlyResult { get; set; } = false;
+        public bool OnlyResult { get; set; } = false;
+
+        //public bool ImediateDraw { get; set; } = false;
         //public Series Serieses;
 
         protected ViewType olviewType;
@@ -48,7 +50,7 @@ namespace Core
             }
             
         }
-        protected float GetInputFunction(float Left)
+        protected virtual float GetInputFunction(float Left)
         {
             //return (float)(Math.Sin(Math.Sqrt(1 + Left * Left)));
             return (float)Math.Sin(Left) * (float)Math.Pow(Math.E, (Math.Cos(Left / 3)));

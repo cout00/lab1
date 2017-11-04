@@ -16,6 +16,7 @@ namespace Core
             return new SeriesPoint(inpPoint.X, new object[] { ((object)(inpPoint.Y)) });
         }
 
+
         
     }
 }

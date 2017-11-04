@@ -35,19 +35,32 @@ namespace Core
             Action asyncAction = () => {
                 chart.Series.Clear();
                 chart.BeginInit();
-                foreach (var item in internalDrawList)
+                foreach (var function in internalDrawList)
                 {
-                    chart.Series.Add(item.Series);
-                    item.Series.Points.Clear();
-                    item.OnNewPoint += (sen, arg) =>
+                    chart.Series.Add(function.Series);
+                    function.Series.Points.Clear();
+                    
+                    if (function.GetType().GetCustomAttributes(typeof(ImmediateDrawAttribute), false).Count()>0)
+                    {
+                        if (function.Count==0)
+                        {
+                            function.Build();
+                        }                        
+                        foreach (var point in function)
+                        {
+                            chart.Series[function.Series.Name].Points.Add(point.ToSeriesPoint());
+                        }                        
+                        continue;
+                    }
+                    function.OnNewPoint += (sen, arg) =>
                     {
                         chart.BeginInvoke((Action)(() =>
                         {
-                            chart.Series[item.Series.Name].Points.Add(arg.point.ToSeriesPoint());
+                            chart.Series[function.Series.Name].Points.Add(arg.point.ToSeriesPoint());
                             chart.Refresh();
                         }));
                     };
-                    item.Build();
+                    function.Build();
                 }
                 chart.EndInit();
             };

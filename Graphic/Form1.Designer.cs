@@ -1,4 +1,6 @@
-﻿namespace Graphic
+﻿using Core;
+
+namespace Graphic
 {
     partial class Form1
     {
@@ -51,19 +53,19 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.FuncAnalog = new Graphic.ChartForFunction();
+            this.FuncAnalog = new Core.ChartForFunction();
             this.FunctionDiscret = new DevExpress.XtraBars.TabFormPage();
             this.xtraScrollableControl3 = new DevExpress.XtraEditors.XtraScrollableControl();
-            this.FuncDiscretn = new Graphic.ChartForFunction();
+            this.FuncDiscretn = new Core.ChartForFunction();
             this.FunctionACH = new DevExpress.XtraBars.TabFormPage();
             this.xtraScrollableControl4 = new DevExpress.XtraEditors.XtraScrollableControl();
-            this.FuncAch = new Graphic.ChartForFunction();
+            this.FuncAch = new Core.ChartForFunction();
             this.FunctionMistakes = new DevExpress.XtraBars.TabFormPage();
             this.xtraScrollableControl5 = new DevExpress.XtraEditors.XtraScrollableControl();
-            this.FuncMistakes = new Graphic.ChartForFunction();
+            this.FuncMistakes = new Core.ChartForFunction();
             this.FunctionQMistake = new DevExpress.XtraBars.TabFormPage();
             this.xtraScrollableControl7 = new DevExpress.XtraEditors.XtraScrollableControl();
-            this.FuncQMistake = new Graphic.ChartForFunction();
+            this.FuncQMistake = new Core.ChartForFunction();
             this.tabFormPage3 = new DevExpress.XtraBars.TabFormPage();
             this.tabFormPage1 = new DevExpress.XtraBars.TabFormPage();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormControl1)).BeginInit();
