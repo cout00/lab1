@@ -21,6 +21,7 @@ namespace Lab2
         {
             Series.Name = "Исходный сигнал";
             Series.ChangeView(DevExpress.XtraCharts.ViewType.Spline);
+            QuantumAbs = dt;
         }
 
         protected override void FillList()

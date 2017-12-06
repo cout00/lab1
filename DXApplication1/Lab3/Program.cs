@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using DevExpress.UserSkins;
 using DevExpress.Skins;
 
-namespace lab4
+namespace Lab3
 {
     static class Program
     {
@@ -20,7 +20,7 @@ namespace lab4
 
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
-            new frmMain().Show();
+            new Form1().Show();
             Application.Run();
         }
     }

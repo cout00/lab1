@@ -6,37 +6,30 @@ using System.Threading.Tasks;
 using Core;
 using System.Drawing;
 
-namespace Lab2
+namespace lab4
 {
-    public class FunctionMain :Function
+    [ImmediateDraw]
+    public class FunctionU :Function
     {
         public override event EventHandler<FuncEventArgs> OnNewPoint;
 
+
         public override float GetInputFunction(float Left)
         {
-            return 5 * (float)Math.Sin(omega* Left);
+            return (float)Math.Exp(-0.05 * (Math.Abs(Left - 110)));
         }
-
-        int periodCount;
-        float T;
-        protected float omega;
-        protected float dt;
-        public int garmonicCount=4;
-        public FunctionMain(int periodCount)
+        public FunctionU()
         {
-            this.periodCount = periodCount;
-            Series.Name = "Основная функция";
+            QuantumAbs= 4;
+            Series.Name = "Функция U";
             Series.ChangeView(DevExpress.XtraCharts.ViewType.Spline);
-            Left = 0;     
-            T = 2 * (float)Math.PI;
-            omega = 2 * (float)Math.PI / T;
-            Right = T*periodCount;
-            dt = (float)((2 * Math.PI) / (garmonicCount * omega)) / 5;
         }
 
         protected override void FillList()
         {
-            for (float i = Left; i <=Right+0.3f ; i+=dt)
+            Left = -250;
+            Right = 250;
+            for (float i = Left; i <= Right + 0.3f; i += QuantumAbs)
             {
                 var func = GetInputFunction(i);
                 PointF point = new PointF(i, func);
@@ -44,8 +37,8 @@ namespace Lab2
                 if (!OnlyResult)
                 {
                     OnNewPoint?.Invoke(this, new FuncEventArgs(point));
-                }                
-            }    
+                }
+            }
         }
     }
 }

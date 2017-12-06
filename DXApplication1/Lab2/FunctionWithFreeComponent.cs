@@ -13,7 +13,7 @@ namespace Lab2
             Series.Name = "Функция со свободной состовляющей 10";
         }
 
-        protected override float GetInputFunction(float Left)
+        public override float GetInputFunction(float Left)
         {
             return base.GetInputFunction(Left)+10;
         }

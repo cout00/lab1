@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Core
 {
     [Serializable]
-    public abstract class Function :List<PointF>
+    public abstract class Function :List<PointF>, ICloneable
     {
         public float Left { get; set; }
         public float Right { get; set; }
@@ -50,7 +50,7 @@ namespace Core
             }
             
         }
-        protected virtual float GetInputFunction(float Left)
+        public virtual float GetInputFunction(float Left)
         {
             //return (float)(Math.Sin(Math.Sqrt(1 + Left * Left)));
             return (float)Math.Sin(Left) * (float)Math.Pow(Math.E, (Math.Cos(Left / 3)));
@@ -59,9 +59,14 @@ namespace Core
         {
             Series = new DevExpress.XtraCharts.Series();
             Series.Tag = GetType().Name;
-            
+            //Series.CheckedInLegend = false;
         }
         protected abstract void FillList();
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 
     public class FuncEventArgs :EventArgs

@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ppPlayer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>150, 17</value>
-  </metadata>
+  <data name="listBoxControl2.Items" xml:space="preserve">
+    <value>Задайте два исходных сигнала в соответствии с вариантом u(t)  e4*1014*(|ta|)12 ,v(t)  2 sin(2* * f 1*t)*u(t) , а третий сигнал будет являться суммой двух предыдущих ( z(t)  u(t)  v(t) ). Простройте графики этих сигналов.</value>
+  </data>
 </root>

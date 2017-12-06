@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraCharts;
+using System.IO;
+using Core.Sound;
 
 namespace Core
 {
     public partial class ChartForFunction :UserControl, IEquatable<Function>
     {
         public bool Loaded { get; set; } = false;
-
+        PlaySound sound;
 
         public List<Function> internalDrawList;
         public void AddFunc(Function inpFunction)
@@ -96,7 +98,12 @@ namespace Core
 
         private void chart_Click(object sender, EventArgs e)
         {
-
+            using (MemoryStream ms = new MemoryStream())
+            {
+                chart.ExportToImage(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+                Bitmap bm = new Bitmap(ms);
+                Clipboard.SetImage(bm);
+            }
         }
         private void ChartForFunction_Load(object sender, EventArgs e)
         {
@@ -107,6 +114,28 @@ namespace Core
         {
           //  e.Graphics.DrawRectangle(Pens.White, 0, 0, 20, 20);
           
+        }
+
+        private void playToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var item in internalDrawList)
+            {
+                if (item.Series.CheckedInLegend)
+                {
+                    sound = new PlaySound(item);
+                    sound.Play();
+                    return;
+                }
+            }
+        }
+
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sound!=null)
+            {
+                sound.Stop();
+            }
+            
         }
     }
 }

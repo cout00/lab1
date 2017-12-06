@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    [System.AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
+    [System.AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
     sealed public class ImmediateDrawAttribute :Attribute
     {
     }

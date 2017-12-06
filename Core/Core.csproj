@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Alglib2">
+      <HintPath>..\packages\alglib2.dll.3.10.4\obj\x64\Release\Alglib2.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Charts.v15.2.Core, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v15.2.Core, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -40,9 +43,14 @@
     <Reference Include="DevExpress.XtraCharts.v15.2.Wizard, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.9.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="NAudio, Version=1.8.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.8.3\lib\net35\NAudio.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -59,16 +67,31 @@
     <Compile Include="ChartForFunction.Designer.cs">
       <DependentUpon>ChartForFunction.cs</DependentUpon>
     </Compile>
+    <Compile Include="EnergySpectre.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Function.cs" />
+    <Compile Include="FunctionConvolution.cs" />
+    <Compile Include="FunctionCorrelation.cs" />
+    <Compile Include="FunctionDiscretCorrelation.cs" />
+    <Compile Include="FunctionPower.cs" />
+    <Compile Include="FurieFunction.cs" />
+    <Compile Include="FurieFunctionInverse.cs" />
     <Compile Include="ImmediateDrawAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sound\PlaySound.cs" />
+    <Compile Include="Sound\SoundStream.cs" />
+    <Compile Include="Sound\StreamPlayer.cs" />
+    <Compile Include="Window.cs" />
+    <Compile Include="WindowsList\WindowBarlette.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ChartForFunction.resx">
       <DependentUpon>ChartForFunction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
