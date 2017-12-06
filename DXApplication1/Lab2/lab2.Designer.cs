@@ -29,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabFormControl1 = new DevExpress.XtraBars.TabFormControl();
             this.tabFormDefaultManager1 = new DevExpress.XtraBars.TabFormDefaultManager();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -48,6 +49,9 @@
             this.FuncFilterNormal = new DevExpress.XtraBars.TabFormPage();
             this.xtraScrollableControl3 = new DevExpress.XtraEditors.XtraScrollableControl();
             this.chartFiltres = new Core.ChartForFunction();
+            this.xtraScrollableControl5 = new DevExpress.XtraEditors.XtraScrollableControl();
+            this.FuncFilterNorma = new DevExpress.XtraBars.TabFormPage();
+            this.chartFiltre = new Core.ChartForFunction();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabFormDefaultManager1)).BeginInit();
             this.xtraScrollableControl1.SuspendLayout();
@@ -55,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.memoFurieCoefs.Properties)).BeginInit();
             this.xtraScrollableControl4.SuspendLayout();
             this.xtraScrollableControl3.SuspendLayout();
+            this.xtraScrollableControl5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabFormControl1
@@ -65,8 +70,9 @@
             this.tabFormControl1.Name = "tabFormControl1";
             this.tabFormControl1.Pages.Add(this.FuncAll);
             this.tabFormControl1.Pages.Add(this.FuncFurie);
+            this.tabFormControl1.Pages.Add(this.FuncFilterNorma);
             this.tabFormControl1.Pages.Add(this.FuncFilterNormalACH);
-            this.tabFormControl1.SelectedPage = this.FuncFurie;
+            this.tabFormControl1.SelectedPage = this.FuncFilterNorma;
             this.tabFormControl1.Size = new System.Drawing.Size(915, 61);
             this.tabFormControl1.TabForm = this;
             this.tabFormControl1.TabIndex = 0;
@@ -227,6 +233,31 @@
             this.chartFiltres.Size = new System.Drawing.Size(921, 526);
             this.chartFiltres.TabIndex = 0;
             // 
+            // xtraScrollableControl5
+            // 
+            this.xtraScrollableControl5.Controls.Add(this.chartFiltre);
+            this.xtraScrollableControl5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraScrollableControl5.Location = new System.Drawing.Point(0, 61);
+            this.xtraScrollableControl5.Name = "xtraScrollableControl5";
+            this.xtraScrollableControl5.Size = new System.Drawing.Size(915, 524);
+            this.xtraScrollableControl5.TabIndex = 7;
+            // 
+            // FuncFilterNorma
+            // 
+            this.FuncFilterNorma.ContentContainer = this.xtraScrollableControl5;
+            this.FuncFilterNorma.Name = "FuncFilterNorma";
+            this.FuncFilterNorma.Text = "Page 3";
+            // 
+            // chartFiltre
+            // 
+            this.chartFiltre.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartFiltre.Loaded = true;
+            this.chartFiltre.Location = new System.Drawing.Point(0, 0);
+            this.chartFiltre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chartFiltre.Name = "chartFiltre";
+            this.chartFiltre.Size = new System.Drawing.Size(915, 524);
+            this.chartFiltre.TabIndex = 0;
+            // 
             // lab2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -236,7 +267,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Controls.Add(this.xtraScrollableControl2);
+            this.Controls.Add(this.xtraScrollableControl5);
             this.Controls.Add(this.tabFormControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "lab2";
@@ -249,6 +280,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.memoFurieCoefs.Properties)).EndInit();
             this.xtraScrollableControl4.ResumeLayout(false);
             this.xtraScrollableControl3.ResumeLayout(false);
+            this.xtraScrollableControl5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,6 +307,9 @@
         private DevExpress.XtraBars.TabFormPage FuncFilterNormalACH;
         private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControl4;
         private Core.ChartForFunction chartFuncFilterACH;
+        private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControl5;
+        private DevExpress.XtraBars.TabFormPage FuncFilterNorma;
+        private Core.ChartForFunction chartFiltre;
     }
 }
 

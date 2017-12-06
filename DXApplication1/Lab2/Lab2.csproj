@@ -69,6 +69,7 @@
     <Compile Include="FunctionMain.cs" />
     <Compile Include="FunctionSequence.cs" />
     <Compile Include="FunctionWithFreeComponent.cs" />
+    <Compile Include="FurieFunction.cs" />
     <Compile Include="lab2.cs">
       <SubType>Form</SubType>
     </Compile>

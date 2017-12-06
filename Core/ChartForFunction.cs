@@ -9,14 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraCharts;
 using System.IO;
-using Core.Sound;
 
 namespace Core
 {
     public partial class ChartForFunction :UserControl, IEquatable<Function>
     {
         public bool Loaded { get; set; } = false;
-        PlaySound sound;
 
         public List<Function> internalDrawList;
         public void AddFunc(Function inpFunction)
@@ -122,8 +120,6 @@ namespace Core
             {
                 if (item.Series.CheckedInLegend)
                 {
-                    sound = new PlaySound(item);
-                    sound.Play();
                     return;
                 }
             }
@@ -131,10 +127,6 @@ namespace Core
 
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (sound!=null)
-            {
-                sound.Stop();
-            }
             
         }
     }
