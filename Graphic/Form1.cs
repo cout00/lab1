@@ -116,7 +116,7 @@ namespace Graphic
                 fc.QuantumOrd = func.QuantumOrd;
                 func.DestroySeries();
                 FuncDiscretn.AddFunc(fc);
-                FuncDiscretn.AddFunc(func);
+                //FuncDiscretn.AddFunc(func);
                 //func.OnlyResult = true;
                 KotelnikovFunction kf = new KotelnikovFunction(func);
                 //kf.OnlyResult = true;
@@ -158,23 +158,19 @@ namespace Graphic
                 {
                     return;
                 }
-                func.Series.ChangeView(ViewType.Spline);
-                var funcan = FuncDiscretn.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionFromTask).Name; });
-                if (funcan == null || FuncMistakes.Equals(funcan))
-                {
-                    return;
-                }
-                func.DestroySeries();
-                funcan.DestroySeries();
+                //func.Series.ChangeView(ViewType.Spline);
+                
+                //func.DestroySeries();
+                
                 SquareAproximationMistakeFunction apx = new SquareAproximationMistakeFunction(func);
-                FuncMistakes.AddFunc(funcan);
-                FuncMistakes.AddFunc(func);
+                
+                //FuncMistakes.AddFunc(func);
                 FuncMistakes.AddFunc(apx);
                 FuncMistakes.DrawFunc();
             }
             if (e.Page==FunctionQMistake)
             {
-                var funcan = FuncDiscretn.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionFromTask).Name; });
+                var funcan = FuncAnalog.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionFromTask).Name; });
                 if (funcan == null)
                 {
                     return;

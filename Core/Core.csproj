@@ -67,22 +67,10 @@
     <Compile Include="ChartForFunction.Designer.cs">
       <DependentUpon>ChartForFunction.cs</DependentUpon>
     </Compile>
-    <Compile Include="EnergySpectre.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Function.cs" />
-    <Compile Include="FunctionConvolution.cs" />
-    <Compile Include="FunctionCorrelation.cs" />
-    <Compile Include="FunctionDiscretCorrelation.cs" />
-    <Compile Include="FunctionPower.cs" />
-    <Compile Include="FurieFunction.cs" />
-    <Compile Include="FurieFunctionInverse.cs" />
     <Compile Include="ImmediateDrawAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sound\PlaySound.cs" />
-    <Compile Include="Sound\SoundStream.cs" />
-    <Compile Include="Sound\StreamPlayer.cs" />
-    <Compile Include="Window.cs" />
-    <Compile Include="WindowsList\WindowBarlette.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ChartForFunction.resx">

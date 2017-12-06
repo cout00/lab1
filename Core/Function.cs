@@ -52,8 +52,9 @@ namespace Core
         }
         public virtual float GetInputFunction(float Left)
         {
+            return (float)Math.Abs(Math.Sin(Left)) + (float)Math.Abs(Math.Sin(2 * Left));
             //return (float)(Math.Sin(Math.Sqrt(1 + Left * Left)));
-            return (float)Math.Sin(Left) * (float)Math.Pow(Math.E, (Math.Cos(Left / 3)));
+            //return (float)Math.Sin(Left) * (float)Math.Pow(Math.E, (Math.Cos(Left / 3)));
         }
         public Function()
         {

@@ -68,30 +68,30 @@ namespace Lab2
                 FunctionAch fWithFreeComp = new FunctionAch(fsincosWithFreeComp.ComplexArray, "со свободным членом");
                 chartFunctionAmplitudes.AddFunc(famain);
                 chartFunctionAmplitudes.AddFunc(fWithFreeComp);
-                chartFunctionAmplitudes.AddFunc(funcSeg.FurieTransform().GetAFR);
+                //chartFunctionAmplitudes.AddFunc(funcSeg.FurieTransform().GetAFR);
                 chartFunctionAmplitudes.DrawFunc();
             }
             #endregion
             #region FuncNormal            
-            if (e.Page==FuncFilterNormal)
+            if (e.Page==FuncFilterNorma)
             {
                 FunctionFromFile fff = new FunctionFromFile();
                 fff.Build();
-                var funcFromFileFiltered = chartFuncFilterACH.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionApplyFilter).Name; });
-                if (funcFromFileFiltered != null)
+                var funcFromFileFiltere = chartFuncFilterACH.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionApplyFilter).Name; });
+                if (funcFromFileFiltere != null)
                 {
-                    FunctionFiltered ffed = new FunctionFiltered((FunctionACHFromFile)funcFromFileFiltered);
+                    FunctionFiltered ffed = new FunctionFiltered((FunctionACHFromFile)funcFromFileFiltere);
                     ffed.Build();
-                    chartFiltres.AddFunc(ffed);
+                    chartFiltre.AddFunc(ffed);
                 }
-                chartFiltres.AddFunc(fff);
-                chartFiltres.DrawFunc();
+                chartFiltre.AddFunc(fff);
+                chartFiltre.DrawFunc();
             }
             #endregion
             #region FuncNormalAch
             if (e.Page==FuncFilterNormalACH)
             {
-                var funcFromFile = chartFiltres.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionFromFile).Name; });
+                var funcFromFile = chartFiltre.internalDrawList.Find((a) => { return (string)a.Series.Tag == typeof(FunctionFromFile).Name; });
                 if (funcFromFile == null || FuncFurie.Equals(funcFromFile))
                 {
                     return;
