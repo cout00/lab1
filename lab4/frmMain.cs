@@ -142,8 +142,7 @@ namespace lab4
                 funcvd.Build();
                 funczd = new FunctionZd(funcud, funcvd);
                 funczd.Build();
-                funczd1 = new FunctionZd1(funcud, funcvd);
-                funczd1.Build();
+                
 
                 funcudiscr = new FunctionUd();
                 funcudiscr.Build();
@@ -156,6 +155,10 @@ namespace lab4
                 funczdiscr = new FunctionZd(funcudiscr, funcvdiscr);
                 funczdiscr.Build();
                 funczdiscr.MadeDiscret();
+
+                funczd1 = new FunctionZd1(funcudiscr, funcvdiscr);
+                funczd1.Build();
+                //funczd1.MadeDiscret();
 
                 spectreU = funcud.FurieTransform().GetAFR;
                 spectreV = funcvd.FurieTransform().GetAFR;
@@ -178,11 +181,11 @@ namespace lab4
                 envzrel = funcvd.RelativeEnergySpectre(funczd).GetAFR;
 
 
-                enuz1rel = funcud.RelativeEnergySpectre(funczd1).GetAFR;
-                envz1rel = funcvd.RelativeEnergySpectre(funczd1).GetAFR;
+                enuz1rel = funcudiscr.RelativeEnergySpectre(funczd1).GetAFR;
+                envz1rel = funcvdiscr.RelativeEnergySpectre(funczd1).GetAFR;
 
-                relcorz1vd = funczd1.CorrelationFunctionDiscret(funcvd, 500);
-                relcorz1ud = funczd1.CorrelationFunctionDiscret(funcud, 500);
+                relcorz1vd = funcvdiscr.CorrelationFunctionDiscret(funczd1, 1000);
+                relcorz1ud = funcudiscr.CorrelationFunctionDiscret(funczd1, 1000);
 
                 //var energyvz = acfvz.FurieTransform().GetAFR;
 

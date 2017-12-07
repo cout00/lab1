@@ -11,16 +11,16 @@ namespace lab4
     [ImmediateDraw]
     class FunctionZd1 :FunctionZd
     {
-
+        const float SHIFT = 1f;
         protected override void FillList()
         {
             Left = 9.4f;
             Right = 11.4f;
             QuantumAbs = 0.002f;
-            for (float i = Left; i <= Right; i += QuantumAbs)
+            for (float i = Left+SHIFT; i <= Right+SHIFT; i += QuantumAbs)
             {
-                var func = GetInputFunction(i+1);
-                PointF point = new PointF(i+1, func);
+                var func = GetInputFunction(i);
+                PointF point = new PointF(i - SHIFT, func);
                 Add(point);
             }
         }

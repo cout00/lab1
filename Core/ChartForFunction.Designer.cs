@@ -73,27 +73,28 @@
             xyDiagram1.EnableAxisYZooming = true;
             this.chart.Diagram = xyDiagram1;
             this.chart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart.Legend.BackColor = System.Drawing.Color.Black;
-            this.chart.Legend.TextColor = System.Drawing.Color.White;
+            this.chart.Legend.BackColor = System.Drawing.Color.White;
+            this.chart.Legend.TextColor = System.Drawing.Color.Maroon;
             this.chart.Legend.UseCheckBoxes = true;
             this.chart.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chart.Location = new System.Drawing.Point(0, 0);
-            this.chart.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.chart.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.chart.Name = "chart";
             this.chart.PaletteName = "Палитра1";
             this.chart.PaletteRepository.Add("Палитра1", new DevExpress.XtraCharts.Palette("Палитра1", DevExpress.XtraCharts.PaletteScaleMode.Repeat, new DevExpress.XtraCharts.PaletteEntry[] {
-                new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(251)))), ((int)(((byte)(90))))), System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(251)))), ((int)(((byte)(90)))))),
+                new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.Red, System.Drawing.Color.Red),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255))))))}));
             this.chart.PaletteRepository.Add("Палитра11", new DevExpress.XtraCharts.Palette("Палитра11", DevExpress.XtraCharts.PaletteScaleMode.Repeat, new DevExpress.XtraCharts.PaletteEntry[] {
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(251)))), ((int)(((byte)(90))))), System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(251)))), ((int)(((byte)(90)))))),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.Red, System.Drawing.Color.Red),
                 new DevExpress.XtraCharts.PaletteEntry(System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(128)))), ((int)(((byte)(255))))))}));
+            series1.CheckedInLegend = false;
             series1.Name = "Ряд 1";
             series1.View = lineSeriesView1;
             this.chart.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1};
-            this.chart.Size = new System.Drawing.Size(634, 489);
+            this.chart.Size = new System.Drawing.Size(476, 397);
             this.chart.TabIndex = 1;
             this.chart.CustomPaint += new DevExpress.XtraCharts.CustomPaintEventHandler(this.chart_CustomPaint);
             this.chart.Click += new System.EventHandler(this.chart_Click);
@@ -105,31 +106,31 @@
             this.playToolStripMenuItem,
             this.stopToolStripMenuItem});
             this.ppPlayer.Name = "ppPlayer";
-            this.ppPlayer.Size = new System.Drawing.Size(110, 52);
+            this.ppPlayer.Size = new System.Drawing.Size(99, 48);
             // 
             // playToolStripMenuItem
             // 
             this.playToolStripMenuItem.Name = "playToolStripMenuItem";
-            this.playToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
+            this.playToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.playToolStripMenuItem.Text = "Play";
             this.playToolStripMenuItem.Click += new System.EventHandler(this.playToolStripMenuItem_Click);
             // 
             // stopToolStripMenuItem
             // 
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.stopToolStripMenuItem.Text = "Stop";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
             // ChartForFunction
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ContextMenuStrip = this.ppPlayer;
             this.Controls.Add(this.chart);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ChartForFunction";
-            this.Size = new System.Drawing.Size(634, 489);
+            this.Size = new System.Drawing.Size(476, 397);
             this.Load += new System.EventHandler(this.ChartForFunction_Load);
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).EndInit();
