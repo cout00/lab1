@@ -64,9 +64,15 @@ namespace lab4
 
         FurieFunction envz1rel;
 
-        FunctionDiscretCorrelation relcorz1ud;
+        FunctionContiniousCorrelation relcorz1ud;
 
-        FunctionDiscretCorrelation relcorz1vd;
+        FunctionContiniousCorrelation relcorz1vd;
+
+        FunctionDiscretCorrelation relcovuv;
+        FunctionDiscretCorrelation relcovuz;
+        FunctionDiscretCorrelation relcovz;
+
+
         #endregion
 
 
@@ -184,63 +190,17 @@ namespace lab4
                 enuz1rel = funcudiscr.RelativeEnergySpectre(funczd1).GetAFR;
                 envz1rel = funcvdiscr.RelativeEnergySpectre(funczd1).GetAFR;
 
-                relcorz1vd = funcvdiscr.CorrelationFunctionDiscret(funczd1, 1000);
-                relcorz1ud = funcudiscr.CorrelationFunctionDiscret(funczd1, 1000);
+                relcorz1vd = funczd1.CorrelationFunctionContinous(funcvd, 2);
+                relcorz1ud = funczd1.CorrelationFunctionContinous(funcud, 2);
 
-                //var energyvz = acfvz.FurieTransform().GetAFR;
+                relcovuv = funcudiscr.CovariationFunctionDiscret(funcvdiscr,500);
+                relcovuz = funcudiscr.CovariationFunctionDiscret(funczdiscr, 500);
+                relcovz = funcvdiscr.CovariationFunctionDiscret(funczdiscr, 500);                //var energyvz = acfvz.FurieTransform().GetAFR;
 
-                //chartForPart2.AddFunc(spectreU);
-                //chartForPart2.AddFunc(spectreV);
-                //chartForPart2.AddFunc(spectreZ);
-                //chartForPart2.AddFunc(energyspectreU);
-                //chartForPart2.AddFunc(energyspectreV);
-                //chartForPart2.AddFunc(energyspectreZ);
-                //chartForPart2.AddFunc(funcud.AutoCorrelationContinous(1));
-                //chartForPart2.AddFunc(funcvd.AutoCorrelationContinous(1));
-                //chartForPart2.AddFunc(funczd.AutoCorrelationContinous(1));
-                //chartForPart2.AddFunc(funcud.AutoCovariationDiscret(500));
-                //chartForPart2.AddFunc(funcvd.AutoCovariationDiscret(500));
-                //chartForPart2.AddFunc(acfu);
-                //chartForPart2.AddFunc(acfv);
-                //chartForPart2.AddFunc(acfz);
-                //chartForPart2.AddFunc(acfuv);
-                //chartForPart2.AddFunc(acfvz);
-                //chartForPart2.AddFunc(acfuz);
-
-                //chartForPart2.AddFunc(enuvrel);
-                //chartForPart2.AddFunc(envzrel);
-                //chartForPart2.AddFunc(enuzrel);
-
-                //chartForPart2.AddFunc(acfuv.FurieTransform().GetAFR);
-                //chartForPart2.AddFunc(energyvz);
-                //chartForPart2.AddFunc(acfuz.FurieTransform().GetAFR);
-
-
-
-                //chartForPart2.AddFunc(funczd.AutoCovariationDiscret(500));
-                //chartForPart2.AddFunc(funczd);
-                //chartForPart2.AddFunc(funczd1);
-                //chartForPart2.AddFunc(funcud);
-
-                //chartForPart2.AddFunc(funcvd);
-                //chartForPart2.AddFunc(energyspectreV.FurieTransformInversion());
-                //chartForPart2.AddFunc(energyspectreU.FurieTransformInversion());
-                //chartForPart2.AddFunc(energyspectreZ.FurieTransformInversion());
-                //chartForPart2.AddFunc(enuvrel.FurieTransformInversion());
-                //chartForPart2.AddFunc(enuzrel.FurieTransformInversion());
-                //chartForPart2.AddFunc(envzrel.FurieTransformInversion());
                 memoPart2.Text += "Скалярное произведение ud и vd =" + funcud.ScalarProduct(funcvd) + Environment.NewLine;
                 memoPart2.Text += "Скалярное произведение ud и zd =" + funcud.ScalarProduct(funczd) + Environment.NewLine;
                 memoPart2.Text += "Скалярное произведение vd и zd =" + funcvd.ScalarProduct(funczd) + Environment.NewLine;
-                //memoResults.Text += "косинус угла между v и u =" + funcu.Norma() / funcV.Norma() + Environment.NewLine;
-
-                //ResultOutPut(memoPart2, funcud);
-                //ResultOutPut(memoPart2, funcvd);
-                //ResultOutPut(memoPart2, funczd);
-                //memoPart2.Text += "энерг из вкф вз" + energyvz.FullEnergy() + Environment.NewLine;
-                //memoPart2.Text += "энерг чистая вз" + envzrel.FullEnergy() + Environment.NewLine;
-                //chartForPart2.DrawFunc();
-
+                
 
 
             }
@@ -366,7 +326,14 @@ namespace lab4
                         chartForPart2.AddFunc(relcorz1vd);
                         break;
                     }
-
+                case 19:
+                    {
+                        chartForPart2.AddFunc(relcovuv);
+                        chartForPart2.AddFunc(relcovuz);
+                        chartForPart2.AddFunc(relcovz);
+                        //chartForPart2.AddFunc(relcorz1vd);
+                        break;
+                    }
 
 
 

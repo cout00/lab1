@@ -23,18 +23,6 @@ namespace lab4
             Series.Name = "u";
             Series.ChangeView(DevExpress.XtraCharts.ViewType.Spline);
         }
-
-        public void MadeDiscret()
-        {
-            Series.Name += "d";
-            for (int i = 0; i < Count; i++)
-            {
-                PointF p = this[i];
-                p.X = i;
-                this[i] = p;
-            }
-        }
-
         protected override void FillList()
         {
             Left = 9.4f;

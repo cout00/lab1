@@ -14,7 +14,7 @@ namespace Core
         public override event EventHandler<FuncEventArgs> OnNewPoint;
         public List<Complex> ComplexArr { get; protected set; }
         public float oldDt { get; set; }
-        Function _inpFunction;
+        protected Function _inpFunction;
 
 
         public FurieFunction ConjugateSpectre
@@ -64,6 +64,7 @@ namespace Core
             _inpFunction = inpFunction;
             Series.Name = "спектр:" + _inpFunction.Series.Name;
             oldDt = _inpFunction.QuantumAbs;
+            //Series.ChangeView(DevExpress.XtraCharts.ViewType.Line);
         }
 
         int getNearTwoPow(int count)

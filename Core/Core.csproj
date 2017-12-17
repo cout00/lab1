@@ -72,17 +72,26 @@
     <Compile Include="Function.cs" />
     <Compile Include="FunctionConvolution.cs" />
     <Compile Include="FunctionCorrelation.cs" />
+    <Compile Include="FunctionDeconvolution.cs" />
     <Compile Include="FunctionDiscretCorrelation.cs" />
+    <Compile Include="FunctionInverseSpectre.cs" />
     <Compile Include="FunctionPower.cs" />
+    <Compile Include="FunctionRealConvolution.cs" />
+    <Compile Include="FunctionRealInverse.cs" />
+    <Compile Include="FunctionWeightedTransform.cs" />
     <Compile Include="FurieFunction.cs" />
     <Compile Include="FurieFunctionInverse.cs" />
     <Compile Include="ImmediateDrawAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleFunctions\FunctionCustom.cs" />
+    <Compile Include="SimpleFunctions\FunctionRectangleImpulse.cs" />
+    <Compile Include="SimpleFunctions\Function_8Bit_1khz_Sinus.cs" />
     <Compile Include="Sound\PlaySound.cs" />
     <Compile Include="Sound\SoundStream.cs" />
     <Compile Include="Sound\StreamPlayer.cs" />
     <Compile Include="Window.cs" />
     <Compile Include="WindowsList\WindowBarlette.cs" />
+    <Compile Include="WindowsList\WindowRectangle.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ChartForFunction.resx">
@@ -93,6 +102,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

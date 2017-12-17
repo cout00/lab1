@@ -11,7 +11,7 @@ namespace lab4
     [ImmediateDraw]
     class FunctionZd1 :FunctionZd
     {
-        const float SHIFT = 1f;
+        const float SHIFT = 0.1f;
         protected override void FillList()
         {
             Left = 9.4f;

@@ -36,10 +36,11 @@ namespace Lab3
                 {
                     Pointlist.Add(this[i]);
                 }
+                else
+                    Pointlist.Add(new PointF(this[i].X, 0));
             }
             Clear();
             AddRange(Pointlist);
         }
-
     }
 }

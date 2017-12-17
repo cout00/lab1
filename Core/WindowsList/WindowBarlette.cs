@@ -10,7 +10,7 @@ namespace Core.WindowsList
     [ImmediateDraw]
    public class WindowBarlette :Window
     {
-        public WindowBarlette(Function AInpFunc) : base(AInpFunc)
+        public WindowBarlette(Function AInpFunc, Tuple<float, float> InterestRegion) : base(AInpFunc,InterestRegion)
         {
             Series.Name += Windows.Barlette.ToString();
         }

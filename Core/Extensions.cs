@@ -13,9 +13,15 @@ namespace Core
     public static class Extensions
     {
         public static SeriesPoint ToSeriesPoint(this PointF inpPoint)
-        { 
+        {
             return new SeriesPoint(inpPoint.X, new object[] { ((object)(inpPoint.Y)) });
         }
+
+        public static float AbsDiff(this float inpParam1, float inpParam2)
+        {
+            return Math.Abs(Math.Abs(inpParam1) - Math.Abs(inpParam2));
+        }
+
 
         public static float Integral(this Function func)
         {
@@ -24,7 +30,7 @@ namespace Core
 
         public static FunctionPower Power(this Function func)
         {
-           return new FunctionPower(func);
+            return new FunctionPower(func);
         }
 
 
@@ -35,7 +41,7 @@ namespace Core
             Ffunc.Build();
             return Ffunc;
         }
-        
+
 
         public static EnergySpectre EnergySpectre(this Function func)
         {
@@ -65,7 +71,7 @@ namespace Core
 
         public static FunctionDiscretCorrelation AutoCorrelationFunctionDiscret(this Function inpf, float maxTau)
         {
-            var func = new FunctionDiscretCorrelation(inpf, null, true, maxTau,false);
+            var func = new FunctionDiscretCorrelation(inpf, null, true, maxTau, false);
             func.Build();
             return func;
         }
@@ -75,6 +81,25 @@ namespace Core
             func.Build();
             return func;
         }
+
+
+        public static FunctionDiscretCorrelation CovariationFunctionDiscret(this Function inpf, Function corFunc, float maxTau)
+        {
+            var func = new FunctionDiscretCorrelation(inpf, corFunc, false, maxTau, true);
+            func.Build();
+            //var pointList = new List<PointF>(func);
+            //pointList.Reverse();
+            //var curInd = func.Last().X;
+            //func.AddRange(pointList.Select(a => {
+            //    var point = a;
+            //    curInd++;
+            //    point.X = curInd;
+            //    return point;
+            //}));
+            return func;
+        }
+
+
 
         public static FunctionContiniousCorrelation AutoCorrelationContinous(this Function inpf, float maxTau)
         {
@@ -125,28 +150,50 @@ namespace Core
         public static Function FurieTransformInversion(this FurieFunction inpf)
         {
             var func = new FurieFunctionInverse(inpf);
-            func.Build();    
+            func.Build();
             return func;
         }
 
         public static FurieFunction ComplexFrequrencyConvolution(this Function inpFunction, Function secondConplexFunc)
-        {         
+        {
             var func = new FunctionConvolution(inpFunction.FurieTransform(), secondConplexFunc.FurieTransform());
+            func.Build();
             return func;
         }
+
+
+        public static FurieFunction ComplexFrequrencyDeconvolution(this Function inpFunction, Function secondConplexFunc)
+        {
+            //inpFunction.PushZerosToMaxLength(secondConplexFunc);
+            var func = new FunctionDeconvolution(inpFunction.FurieTransform(), secondConplexFunc.FurieTransform());
+            func.Build();
+            return func;
+        }
+
 
         public static FurieFunction RealFrequrencyConvolution(this Function inpFunction, Function secondRealFunc)
         {
             var func = new FunctionConvolution(inpFunction.FurieTransform(), secondRealFunc);
+            func.Build();
             return func;
         }
 
-        public static Function Shift(this Function inpFunc)
+        /// <summary>
+        /// Возвращает взвешенное произведение функций
+        /// </summary>
+        /// <param name="inpFunc">Основная функция</param>
+        /// <param name="weights">Весовое преобразование</param>
+        /// <returns></returns>
+
+        public static Function WeightedTransform(this Function inpFunc, Function weights)
         {
-            if (inpFunc.Count<2)
-            {
-                throw new Exception("Not valid Function");
-            }
+            FunctionWeightedTransform fwt = new FunctionWeightedTransform(inpFunc, weights);
+            fwt.Build();
+            return fwt;
+        }
+
+        public static void SortByX(this Function inpFunc)
+        {
             inpFunc.Sort((ALeft, ARight) =>
             {
                 if (ARight == null)
@@ -154,7 +201,18 @@ namespace Core
                 else
                     return ALeft.X.CompareTo(ARight.X);
             });
-            var shiftSize = Math.Abs(Math.Abs(inpFunc[0].X)- Math.Abs(inpFunc[1].X))*inpFunc.Count/2;
+        }
+
+
+
+        public static Function Shift(this Function inpFunc)
+        {
+            if (inpFunc.Count < 2)
+            {
+                throw new Exception("Not valid Function");
+            }
+            inpFunc.SortByX();
+            var shiftSize = Math.Abs(Math.Abs(inpFunc[0].X) - Math.Abs(inpFunc[1].X)) * inpFunc.Count / 2;
             var tempCount = inpFunc.Count / 2;
             for (int i = 0; i < tempCount; i++)
             {
@@ -167,28 +225,48 @@ namespace Core
                 inpFunc.Add(p);
                 inpFunc.RemoveAt(0);
             }
-            inpFunc.Sort((ALeft, ARight) =>
-            {
-                if (ARight == null)
-                    return 1;
-                else
-                    return ALeft.X.CompareTo(ARight.X);
-            });
+            inpFunc.SortByX();
             return inpFunc;
         }
 
 
-        public static FurieFunction ApplyWindow(this Function inpFunc, Windows window)
+        public static Function InverseFunction(this Function inpFunc)
         {
-            FurieFunction res=null;
+            //FunctionRealInverse invSpectre = new FunctionRealInverse(inpFunc);
+            FunctionInverseSpectre invSpectre = new FunctionInverseSpectre(inpFunc.FurieTransform());
+            invSpectre.Build();
+            return invSpectre.FurieTransformInversion();
+        }
+
+        public static FunctionInverseSpectre InverseSpectre(this Function inpfunc)
+        {
+            FunctionInverseSpectre invSpectre = new FunctionInverseSpectre(inpfunc.FurieTransform());
+            invSpectre.Build();
+            return invSpectre;
+        }
+
+
+        public static Function RealConvolution(this Function inpFunc, Function ConvSeed)
+        {
+            FunctionRealConvolution rc = new FunctionRealConvolution(inpFunc, ConvSeed);
+            rc.Build();
+            return rc;
+        }
+
+        public static Function ApplyWindow(this Function inpFunc, Windows window, Tuple<float, float> InterestRegion)
+        {
+            Function res = null;
+            Window win=null;
             switch (window)
             {
                 case Windows.Barlette:
                     {
-                        WindowBarlette wb = new WindowBarlette(inpFunc);
-                        wb.Build();
-                        res = inpFunc.RealFrequrencyConvolution(wb.Shift());
-                        res.Build();                    
+                        win = new WindowBarlette(inpFunc, InterestRegion);                        
+                        break;
+                    }
+                case Windows.Rectangle:
+                    {
+                        win = new WindowRectangle(inpFunc, InterestRegion);
                         break;
                     }
                 case Windows.Natol:
@@ -198,9 +276,12 @@ namespace Core
                 default:
                     break;
             }
+            win.Build();
+            res = inpFunc.WeightedTransform(win);
+            res.Build();
             return res;
         }
 
-        
+
     }
 }

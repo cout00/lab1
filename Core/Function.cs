@@ -47,9 +47,48 @@ namespace Core
             {
                 Clear();
                 FillList();
-            }
-            
+            }           
         }
+
+
+        public void PushZerosToMaxLength(Function secondFunc)
+        {
+            if (this.Count>secondFunc.Count)
+            {
+                var curIndex = secondFunc.Last().X;
+                var oldCount = secondFunc.Count;
+                for (int i = 0; i < Count - oldCount; i++)
+                {
+                    curIndex++;
+                    secondFunc.Add(new PointF(curIndex, 0));
+                }
+            }
+            else
+            {
+                var curIndex = this.Last().X;
+                var oldCount = this.Count;
+                for (int i = 0; i < secondFunc.Count - oldCount; i++)
+                {
+                    curIndex++;
+                    Add(new PointF(curIndex, 0));
+                }
+            }
+        }
+
+
+        public void MadeDiscret()
+        {
+            Series.Name += "d";
+            for (int i = 0; i < Count; i++)
+            {
+                PointF p = this[i];
+                p.X = i;
+                this[i] = p;
+            }
+        }
+
+
+
         public virtual float GetInputFunction(float Left)
         {
             //return (float)(Math.Sin(Math.Sqrt(1 + Left * Left)));

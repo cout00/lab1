@@ -11,7 +11,8 @@ namespace Core
     {
         Barlette,
         Natol,
-        Hemming
+        Hemming,
+        Rectangle
     }
 
     [ImmediateDraw]
@@ -20,24 +21,33 @@ namespace Core
         public override event EventHandler<FuncEventArgs> OnNewPoint;
 
         protected float N;
+        Tuple<float, float> FInterestRegion;
 
-        public Window(Function AInpFunc)
+        public Window(Function AInpFunc, Tuple<float,float> InterestRegion)
         {
             Left = 0;
             Right = AInpFunc.Count;
             QuantumAbs = 1;
             Series.Name = "Окно ";
-            N = AInpFunc.Count / QuantumAbs;
+            FInterestRegion = InterestRegion;
+            N = FInterestRegion.Item2.AbsDiff(FInterestRegion.Item1) / QuantumAbs;
         }
 
 
         protected override void FillList()
         {
+            float regionInterval = 0f;
             for (float i = Left; i < Right; i += QuantumAbs)
             {
-                var func = GetInputFunction(i);
-                PointF point = new PointF(i, func);
-                Add(point);
+                if (i>=FInterestRegion.Item1 && i <= FInterestRegion.Item2)
+                {
+                    var func = GetInputFunction(regionInterval);
+                    PointF point = new PointF(i, func);
+                    Add(point);
+                    regionInterval += QuantumAbs;
+                }
+                else
+                    Add(new PointF(i,0));
             }
         }
 

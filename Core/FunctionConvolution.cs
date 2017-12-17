@@ -9,9 +9,9 @@ namespace Core
     [ImmediateDraw]
     public class FunctionConvolution:FurieFunction
     {
-        FurieFunction funcComplex1;
-        FurieFunction funcComplex2;
-        Function funcReal;
+        protected FurieFunction funcComplex1;
+        protected FurieFunction funcComplex2;
+        protected Function funcReal;
 
         public FunctionConvolution(FurieFunction funcComplex1, FurieFunction funcComplex2)
         {

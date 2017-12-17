@@ -16,7 +16,7 @@ namespace Core
         {
             _func = func;
             Series.Name = "Мощность: " + func.Series.Name;
-            FillList();
+            //FillList();
         }
 
         protected override void FillList()
